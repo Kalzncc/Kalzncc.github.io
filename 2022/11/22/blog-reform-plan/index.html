@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+    <title>博客改造计划 - Kalzn的个人博客</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"> <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <meta name="description" content="现在前面 首先感谢Nexmoe主题的开发大佬们。 本篇blog主要记录了我在构建这个博客时的一些踩坑经历和一些小改造。以供他人借鉴之。 对LaTex的支持 写机器学习比较多，难免要用到LaTex，但是我从CSDN搬运过来后发现LaTex不能渲染。遂上网查询解决方案。发现时hexo预制的渲染器不支持LaTex公式。 解决方案很多，但是很多都没有效果，不清楚为什么，这里通过多次尝试，找到了一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客改造计划">
+<meta property="og:url" content="http://kalzncc.github.io/2022/11/22/blog-reform-plan/index.html">
+<meta property="og:site_name" content="Kalzn的个人博客">
+<meta property="og:description" content="现在前面 首先感谢Nexmoe主题的开发大佬们。 本篇blog主要记录了我在构建这个博客时的一些踩坑经历和一些小改造。以供他人借鉴之。 对LaTex的支持 写机器学习比较多，难免要用到LaTex，但是我从CSDN搬运过来后发现LaTex不能渲染。遂上网查询解决方案。发现时hexo预制的渲染器不支持LaTex公式。 解决方案很多，但是很多都没有效果，不清楚为什么，这里通过多次尝试，找到了一">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://kalzncc.github.io/2022/11/22/blog-reform-plan/1.png">
+<meta property="og:image" content="http://kalzncc.github.io/2022/11/22/blog-reform-plan/2.png">
+<meta property="og:image" content="http://kalzncc.github.io/2022/11/22/blog-reform-plan/3.png">
+<meta property="og:image" content="http://kalzncc.github.io/2022/11/22/blog-reform-plan/4.png">
+<meta property="og:image" content="http://kalzncc.github.io/2022/11/22/blog-reform-plan/5.png">
+<meta property="article:published_time" content="2022-11-22T03:19:06.000Z">
+<meta property="article:modified_time" content="2022-11-22T04:08:48.492Z">
+<meta property="article:author" content="Kalzn">
+<meta property="article:tag" content="置顶">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kalzncc.github.io/2022/11/22/blog-reform-plan/1.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1669090133938">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1669090133938">
+
+    
+        
+            <link rel="stylesheet" href="/custom.css?v=1669090133939">
+        
+    
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(/static/pic/back.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kalzn" class="mdui-btn mdui-btn-icon"><img src="/static/pic/fiska.png" alt="Kalzn"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kalzn">
+            <img src="/static/pic/fiska.png" alt="Kalzn" alt="Kalzn">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>8</div>
+        <div><span>Tags</span>6</div>
+        <div><span>Categories</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives.html" title="博客归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                博客归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35802619" title="CSDN博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                CSDN博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/2022/11/19/hello-world/" title="博客迁移说明">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                博客迁移说明
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/2022/11/19/about-me/" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1669090133939"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/28967505"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/Kalzncc"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/ai-te-meyi-xia"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/AI/">AI</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/博客改造/">博客改造</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法竞赛/">算法竞赛</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/ICPC/" style="font-size: 10px;">ICPC</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 15px;">置顶</a> <a href="/tags/%E8%93%9D%E6%A1%A5/" style="font-size: 10px;">蓝桥</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(6);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/22/blog-reform-plan/">博客改造计划</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/20/lanqiao-2021-recall/">2021年-蓝桥c/c++ b组国赛回忆题解</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/20/segment-tree-merge-4-example/">线段树合并(四道例题)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/19/smo/">SMO算法流程</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/19/simple-bayes/">基于C++的朴素贝叶斯分类器</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://www.squirt1e.top/" target="_blank" >
+                    <img src="/static/yjl.png" alt="Squirt1e(某CTF佬)"></img>
+                    <p>Squirt1e(某CTF佬)</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Kalzn
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次 </span><span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次 </span>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="/static/pic/random_background/8.jpg" alt="博客改造计划" loading="lazy">
+            <h1>博客改造计划</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年11月22日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%8D%9A%E5%AE%A2%E6%94%B9%E9%80%A0/">博客改造</a>
+        
+        
+
+        <!-- 添加label列举 -->
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a>
+    
+</div>
+
+    </div>
+    
+    
+    
+    
+    
+
+</div>
+
+    <h2 id="现在前面">现在前面</h2>
+<p>首先感谢<a
+target="_blank" rel="noopener" href="https://github.com/theme-nexmoe/hexo-theme-nexmoe">Nexmoe</a>主题的开发大佬们。</p>
+<p>本篇blog主要记录了我在构建这个博客时的一些踩坑经历和一些小改造。以供他人借鉴之。</p>
+<h2 id="对latex的支持">对LaTex的支持</h2>
+<p>写机器学习比较多，难免要用到LaTex，但是我从CSDN搬运过来后发现LaTex不能渲染。遂上网查询解决方案。发现时hexo预制的渲染器不支持LaTex公式。
+解决方案很多，但是很多都没有效果，不清楚为什么，这里通过多次尝试，找到了一种适用于本主题的解决方案。</p>
+<p>这里应该先卸载原本的渲染器，安装pandoc渲染器。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">npm uninstall hexo-renderer-marked --save<br>npm install hexo-renderer-kramed --save<br></code></pre></td></tr></table></figure>
+<p>在<strong>主题</strong>的config.yml文件中添加配置。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># MathJax</span><br><span class="hljs-attr">mathjax:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">per_page:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<p>在hexo的_config.yml文件中添加配置。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># mathjax:</span><br><span class="hljs-comment">#   tags: none # or &#x27;ams&#x27; or &#x27;all&#x27;</span><br><span class="hljs-comment">#   single_dollars: true # enable single dollar signs as in-line math delimiters</span><br><span class="hljs-comment">#   cjk_width: 0.9 # relative CJK char width</span><br><span class="hljs-comment">#   normal_width: 0.6 # relative normal (monospace) width</span><br><span class="hljs-comment">#   append_css: true # add CSS to pages rendered by MathJax</span><br><span class="hljs-comment">#   every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter</span><br><span class="hljs-attr">markdown:</span><br>  <span class="hljs-attr">plugins:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-footnote</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-sup</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-sub</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-abbr</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-emoji</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">hexo-math</span><br></code></pre></td></tr></table></figure>
+<p>在每篇博客的头部添加<code>mathjax</code>标签。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">示例</span><br><span class="hljs-attr">mathjax:</span> <span class="hljs-literal">true</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
+<p>随后博客可以正常渲染LaTex公式。</p>
+<h2 id="代码高亮问题">代码高亮问题</h2>
+<p>发现代码的显示出现了问题，代码块的样式很正常，但是代码无法根据不同语言高亮。这个问题折腾了我很长时间，上网几经周折也没找出问题。网上给出的方案挨个尝试也没什么效果。<strong>最后通过以下手段解决了一半，代码可以高亮了，但是风格有些奇怪</strong>。</p>
+<p>变更_config.yml文件配置。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">highlight:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">auto_detect:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;&#x27;</span><br>  <span class="hljs-attr">wrap:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">hljs:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">prismjs:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">false</span><br>  <span class="hljs-attr">preprocess:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">line_number:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">tab_replace:</span> <span class="hljs-string">&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<p>在网站头进入highlist.js脚本，一种具体做法是在<strong>主题</strong>的config.yml文件中更改配置,
+在网页<code>head</code>标签中嵌入js。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">slotHead:</span> <span class="hljs-string">&#x27;&lt;script src=&quot;//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js&quot;&gt;&lt;/script&gt;&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="博客置顶">博客置顶</h2>
+<p>我想把一篇blog进行置顶操作，百度后，发现有个方法，就是在文章头部中添加top参数，top值越高，越靠前。但是尝试后发现没有效果。这里发现_config.yml文件中有下面属性：</p>
+<p><img src="./1.png" /></p>
+<p>遂尝试改成： <img src="./2.png" /></p>
+<p>但是发现没有任何效果，在hexo文档中也没有找到有关这个参数的说明。这里在百度的指导下，找到hexo有关主页博客排序的源码位置<code>node_mudules/hexo-generator-index/lib/generator.js</code>，<del>观察源码，但是忽然意识到自己不怎么会js</del>。总之，既然无法理解，就改一下源码，手动进行排序吧。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// posts.data.sort((a, b) =&gt; (b.sticky || 0) - (a.sticky || 0)); // 将源代码中的该语句注释，改成下面这样。</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">warn</span>(<span class="hljs-string">&quot;Kalzn:: Hexo 源码已经被修改！ hexo-generator-index/lib/generator.js 首页排序被自定义！&quot;</span>);<br>posts.<span class="hljs-property">data</span> = posts.<span class="hljs-property">data</span>.<span class="hljs-title function_">sort</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">a, b</span>) &#123;<br>  <span class="hljs-keyword">if</span>(a.<span class="hljs-property">top</span> &amp;&amp; b.<span class="hljs-property">top</span>) &#123; /<br>      <span class="hljs-keyword">if</span>(a.<span class="hljs-property">top</span> == b.<span class="hljs-property">top</span>) <span class="hljs-keyword">return</span> b.<span class="hljs-property">date</span> - a.<span class="hljs-property">date</span>; <br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> b.<span class="hljs-property">top</span> - a.<span class="hljs-property">top</span>; <br>  &#125;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(a.<span class="hljs-property">top</span> &amp;&amp; !b.<span class="hljs-property">top</span>) &#123;<br>      <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>  &#125;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(!a.<span class="hljs-property">top</span> &amp;&amp; b.<span class="hljs-property">top</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>  &#125;<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> b.<span class="hljs-property">date</span> - a.<span class="hljs-property">date</span>;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>此时我们在将文章头部引入top属性，文章将以top排序，之后按照date排序。
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">示例</span><br><span class="hljs-attr">top:</span> <span class="hljs-number">10</span><br><span class="hljs-attr">date: 2022-11:14:</span> <span class="hljs-number">11</span><span class="hljs-string">:45:14</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure></p>
+<p>此时发现，想要置顶的blog已经出现在文章首页啦！但是有个问题，我得让别人直到这是个置顶blog呀。此时我想到了标签系统，如果这是我给文章打个置顶标签，就能看到了。但是，Nexmoe主题默认是无法在主页显示标签的（只会显示分类），所以这里对源码进行一些改写。</p>
+<p>在主题的<code>layout/_partial/_post/meta.ejs</code>中添加tags的显示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;nexmoe-rainbow&quot;</span>&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nexmoefont icon-calendar-fill&quot;</span>&gt;</span>&lt;%- date(page.date, &quot;YYYY年MM月DD日&quot;) %&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br>    &lt;% <span class="hljs-keyword">if</span> (page.<span class="hljs-property">categories</span> &amp;&amp; page.<span class="hljs-property">categories</span>.<span class="hljs-property">length</span>)&#123; %&gt;<br>        &lt;%- <span class="hljs-title function_">list_categories</span>(page.<span class="hljs-property">categories</span>, &#123;<br>            <span class="hljs-attr">show_count</span>: <span class="hljs-literal">false</span>,<br>            <span class="hljs-attr">class</span>: <span class="hljs-string">&#x27;nexmoefont icon-appstore-fill &#x27;</span>,<br>            <span class="hljs-attr">style</span>: <span class="hljs-string">&#x27;none&#x27;</span>,<br>            <span class="hljs-attr">separator</span>: <span class="hljs-string">&#x27;&#x27;</span><br>        &#125;) %&gt;<br>    &lt;% &#125; %&gt;<br>    &lt;%- <span class="hljs-title function_">partial</span>(<span class="hljs-string">&#x27;_partial/_post/word-count&#x27;</span>, &#123;<span class="hljs-attr">post</span>: page&#125;) %&gt;<br><br>    &lt;!-- 添加label列举 --&gt;<br>    &lt;%- <span class="hljs-title function_">partial</span>(<span class="hljs-string">&#x27;_partial/_post/tag&#x27;</span>, &#123;<span class="hljs-attr">post</span>: page&#125;) %&gt;<br><br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+<p>此时，在引入置顶标签后，就可以看到了。</p>
+<p><img src="./3.png" /></p>
+<p>但是，此时我发现，在进入blog后，会在文章的上下显示两边标签（文章末的标签是原本自带的）。这里索性将文章末的标签注释，改在文章头显示标签。</p>
+<p>在主题的<code>layout/post.ejs</code>中注释代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;% <span class="hljs-keyword">if</span> (!page.<span class="hljs-property">reprint</span>)&#123; %&gt;<br>    &lt;%- <span class="hljs-title function_">partial</span>(<span class="hljs-string">&#x27;_partial/copyright&#x27;</span>) %&gt;<br>&lt;% &#125; %&gt;<br><br>&lt;!-- &lt;%- <span class="hljs-title function_">partial</span>(<span class="hljs-string">&#x27;_partial/_post/tag&#x27;</span>) %&gt; --&gt;<br><br>&lt;% <span class="hljs-keyword">if</span> (page.<span class="hljs-property">comments</span>)&#123; %&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nexmoe-post-footer&quot;</span>&gt;</span></span><br><span class="language-xml">        &lt;%- theme.slotComment %&gt;</span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;% &#125; %&gt;<br></code></pre></td></tr></table></figure>
+<p>大功告成。</p>
+<h2 id="文章图片随机显示">文章图片随机显示</h2>
+<p>网上有随机显示的教程，但好像是指定一个随机显示图片的连接。我们需求是想从我自己选取的一组图片中随机选取一个。应该有解决方案，但是我懒得找了，自己动手吧！</p>
+<p>在主题的config.yml中添加自定的参数。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">background:</span> <span class="hljs-comment"># 既是博客的背景，又是文章默认头图</span><br>    <span class="hljs-attr">randomImage:</span> <span class="hljs-literal">true</span> <span class="hljs-comment">#开启随机图片</span><br>    <span class="hljs-attr">randomFolder:</span> <span class="hljs-string">/static/pic/random_background/</span> <span class="hljs-comment">#随机图片存放的文件夹</span><br>    <span class="hljs-attr">randomNumber:</span> <span class="hljs-number">9</span> <span class="hljs-comment"># 随机图片的数量</span><br>    <span class="hljs-attr">path:</span> <span class="hljs-string">/static/pic/back.jpg</span><br>    <span class="hljs-attr">width:</span> <span class="hljs-number">1280</span><br>    <span class="hljs-attr">height:</span> <span class="hljs-number">726</span><br></code></pre></td></tr></table></figure>
+<p>在主题的<code>layout/index.ejs</code>中添加对改参数的支持，这里在目录下随机选取一个图片，随机的数值与位置题目对应，以保证每次生成时，同一篇文章始终对应一张图片（也可以完全随机，但是不想每次生成都把整个网站的样子完全改变一下。笑）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;a href=<span class="hljs-string">&quot;&lt;%- url_for(page.path) %&gt;&quot;</span>&gt;<br>            &lt;% <span class="hljs-keyword">if</span> (page.<span class="hljs-property">cover</span>)&#123; %&gt;<br>                &lt;div class=&quot;nexmoe-post-cover mdui-ripple absolute&quot; style=&quot;padding-top: &lt;%- page.coverHeight/page.coverWidth*100 %&gt;%;&quot;&gt; <br>                    &lt;img src=&quot;&lt;%- page.cover %&gt;&quot; alt=&quot;&lt;%= page.title %&gt;&quot; loading=&quot;lazy&quot;&gt;<br>                    &lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;<br>                &lt;/div&gt;<br>            &lt;% &#125; else if(theme.background.randomImage) &#123; <br>                randomNo = 0;<br>                for (var i =0; i &lt;page.title.length; i++) &#123;<br>                    randomNo = (randomNo + page.title.charCodeAt(i) * 11451419 % 1000000007) % 1000000007;<br>                &#125;<br>                randomNo %= theme.background.randomNumber;<br>                randomPath = theme.background.randomFolder + randomNo + &quot;.jpg&quot;;<br>            %&gt;<br>                &lt;div class=&quot;nexmoe-post-cover absolute&quot; style=&quot;padding-top: &lt;%- page.coverHeight/page.coverWidth*100 %&gt;%;&quot;&gt; <br>                    &lt;img src=&quot;&lt;%- randomPath %&gt;&quot; alt=&quot;&lt;%= page.title %&gt;&quot; loading=&quot;lazy&quot;&gt;<br>                    &lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;<br>                &lt;/div&gt;<br>            &lt;%&#125;  else&#123; %&gt;<br>                &lt;div class=&quot;nexmoe-post-cover mdui-ripple&quot;&gt; <br>                    &lt;img src=&quot;&lt;%- theme.background.path %&gt;&quot; alt=&quot;&lt;%= page.title %&gt;&quot; loading=&quot;lazy&quot;&gt;<br>                    &lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;<br>                &lt;/div&gt;<br>            &lt;% &#125; %&gt;<br></code></pre></td></tr></table></figure>
+<p>同样在<code>layout/post.ejs</code>进行改变。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;% <span class="hljs-keyword">if</span> (page.<span class="hljs-property">cover</span>)&#123; %&gt;<br>        &lt;div class=&quot;nexmoe-post-cover absolute&quot; style=&quot;padding-top: &lt;%- page.coverHeight/page.coverWidth*100 %&gt;%;&quot;&gt; <br>            &lt;img src=&quot;&lt;%- page.cover %&gt;&quot; alt=&quot;&lt;%= page.title %&gt;&quot; loading=&quot;lazy&quot;&gt;<br>            &lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;<br>        &lt;/div&gt;<br>    &lt;% &#125; else if(theme.background.randomImage) &#123; <br>        randomNo = 0;<br>        for (var i =0; i &lt;page.title.length; i++) &#123;<br>            randomNo = (randomNo + page.title.charCodeAt(i) * 11451419 % 1000000007) % 1000000007;<br>        &#125;<br>        randomNo %= theme.background.randomNumber;<br>        randomPath = theme.background.randomFolder + randomNo + &quot;.jpg&quot;;<br>    %&gt;<br>        &lt;div class=&quot;nexmoe-post-cover absolute&quot; style=&quot;padding-top: &lt;%- page.coverHeight/page.coverWidth*100 %&gt;%;&quot;&gt; <br>            &lt;img src=&quot;&lt;%- randomPath %&gt;&quot; alt=&quot;&lt;%= page.title %&gt;&quot; loading=&quot;lazy&quot;&gt;<br>            &lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;<br>        &lt;/div&gt;<br>    &lt;%&#125;  else&#123; %&gt;<br>        &lt;div class=&quot;nexmoe-post-cover&quot;&gt; <br>            &lt;img src=&quot;&lt;%- theme.background.path %&gt;&quot; alt=&quot;&lt;%= page.title %&gt;&quot; loading=&quot;lazy&quot;&gt;<br>            &lt;h1&gt;&lt;%= page.title %&gt;&lt;/h1&gt;<br>        &lt;/div&gt;<br>    &lt;% &#125; %&gt;<br></code></pre></td></tr></table></figure>
+<p>然后创建存储随机文件的文件夹，放入对应数量的图片。图片命名从0开始，后缀是jpg。</p>
+<p><img src="./4.png" /></p>
+<p>然后开始欣赏美如画的荧妹妹吧！</p>
+<p><img src="./5.png" /></p>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>Kalzn<br>
+        <strong>Link：</strong><a href="http://kalzncc.github.io/2022/11/22/blog-reform-plan/" title="http:&#x2F;&#x2F;kalzncc.github.io&#x2F;2022&#x2F;11&#x2F;22&#x2F;blog-reform-plan&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;kalzncc.github.io&#x2F;2022&#x2F;11&#x2F;22&#x2F;blog-reform-plan&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>除文章中特别注明外，本站所有文章采用 <a href="https://creativecommons.org/licenses/by/3.0/cn/deed.zh" target="_blank">CC BY 3.0 CN</a> 协议进行许可 <div><strong>即在署明文章作者及来源的情况下，您可以将本文用于包括商业目在内的任何用途。</strong></div> <div><strong>除此之外，本文不做正确性担保，本人不对产生的问题负责。</strong></div>
+        
+    </div>
+
+
+  
+  
+  <!-- <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a>
+    
+</div> -->
+
+  
+      <div class="nexmoe-post-footer">
+          评论区建设中
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">现在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9latex%E7%9A%84%E6%94%AF%E6%8C%81"><span class="toc-number">2.</span> <span class="toc-text">对LaTex的支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">代码高亮问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E7%BD%AE%E9%A1%B6"><span class="toc-number">4.</span> <span class="toc-text">博客置顶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87%E9%9A%8F%E6%9C%BA%E6%98%BE%E7%A4%BA"><span class="toc-number">5.</span> <span class="toc-text">文章图片随机显示</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="Search"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1669090133959"></script>
+
+
+
+</body>
+
+</html>
