@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+    <title>机器学习算法实现 - Kalzn的个人博客</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"> <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <meta name="description" content="仓库地址 MachineLearningImpl 这里是一些经典机器学习算法的实现。实现基于C++或者python基本库（python使用numpy和pandas，不使用任何机器学习框架），初学学习之用。 当前更新： &gt; ANN &gt; 朴素bayes &gt; CART决策树 &gt; ID3决策树  &gt; 随机森林  &gt; kNN  &gt; Kmeans">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习算法实现">
+<meta property="og:url" content="http://kalzncc.github.io/2022/12/10/ML-impl/index.html">
+<meta property="og:site_name" content="Kalzn的个人博客">
+<meta property="og:description" content="仓库地址 MachineLearningImpl 这里是一些经典机器学习算法的实现。实现基于C++或者python基本库（python使用numpy和pandas，不使用任何机器学习框架），初学学习之用。 当前更新： &gt; ANN &gt; 朴素bayes &gt; CART决策树 &gt; ID3决策树  &gt; 随机森林  &gt; kNN  &gt; Kmeans">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/44296812/200552672-e5e3f832-c564-4e19-85be-120cfab5e58d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/44296812/201329434-c301b4be-f906-4f0c-851f-c66081fae2ce.png">
+<meta property="article:published_time" content="2022-12-10T09:45:10.000Z">
+<meta property="article:modified_time" content="2022-12-10T09:48:22.059Z">
+<meta property="article:author" content="Kalzn">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/44296812/200552672-e5e3f832-c564-4e19-85be-120cfab5e58d.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1670665705140">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1670665705140">
+
+    
+        
+            <link rel="stylesheet" href="/custom.css?v=1670665705140">
+        
+    
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(/static/pic/back.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kalzn" class="mdui-btn mdui-btn-icon"><img src="/static/pic/fiska.png" alt="Kalzn"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kalzn">
+            <img src="/static/pic/fiska.png" alt="Kalzn" alt="Kalzn">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>9</div>
+        <div><span>Tags</span>7</div>
+        <div><span>Categories</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives.html" title="博客归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                博客归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35802619" title="CSDN博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                CSDN博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/2022/11/19/hello-world/" title="博客迁移说明">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                博客迁移说明
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/2022/11/19/about-me/" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="Search" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1670665705140"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/28967505"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/Kalzncc"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/ai-te-meyi-xia"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/AI/">AI</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/博客改造/">博客改造</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法竞赛/">算法竞赛</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/ICPC/" style="font-size: 10px;">ICPC</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 15px;">置顶</a> <a href="/tags/%E8%93%9D%E6%A1%A5/" style="font-size: 10px;">蓝桥</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(7);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/12/10/ML-impl/">机器学习算法实现</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/22/blog-reform-plan/">博客改造计划</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/20/lanqiao-2021-recall/">2021年-蓝桥c/c++ b组国赛回忆题解</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/20/segment-tree-merge-4-example/">线段树合并(四道例题)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/19/smo/">SMO算法流程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://www.squirt1e.top/" target="_blank" >
+                    <img src="/static/yjl.png" alt="Squirt1e(某CTF佬)"></img>
+                    <p>Squirt1e(某CTF佬)</p>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://wu3227834.github.io/" target="_blank" >
+                    <img src="/static/wdj.png" alt="小布丁(某测试佬)"></img>
+                    <p>小布丁(某测试佬)</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Kalzn
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次 </span><span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次 </span>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="/static/pic/random_background/6.jpg" alt="机器学习算法实现" loading="lazy">
+            <h1>机器学习算法实现</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2022年12月10日</a>
+        
+        
+
+        <!-- 添加label列举 -->
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/AI/" rel="tag">AI</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>
+    
+</div>
+
+    </div>
+    
+    
+    
+    
+    
+
+</div>
+
+    <p><a target="_blank" rel="noopener" href="https://github.com/Kalzncc/MachineLearningImpl/edit/master/README.md">仓库地址</a></p>
+<h1 id="machinelearningimpl">MachineLearningImpl</h1>
+<p>这里是一些经典机器学习算法的实现。实现基于C++或者python基本库（python使用numpy和pandas，不使用任何机器学习框架），初学学习之用。</p>
+<p>当前更新： &gt; <a href="#ann">ANN</a><br>
+&gt; <a href="#bys">朴素bayes</a><br>
+&gt; <a href="#cart">CART决策树</a><br>
+&gt; <a href="#id3">ID3决策树 </a><br>
+&gt; <a href="#rf">随机森林 </a><br>
+&gt; <a href="#knn">kNN </a><br>
+&gt; <a href="#kmeans">Kmeans </a><br>
+&gt; <a href="#svm">SVM</a></p>
+<p><a id="ann"></a></p>
+<h2 id="ann基于c">ANN（基于C++）</h2>
+<p>https://github.com/Kalzncc/SimpleANNModel</p>
+<p><a id="bys"></a></p>
+<h2 id="朴素bayes基于c">朴素bayes（基于C++）</h2>
+<p>https://github.com/Kalzncc/SimpleBayesClassifier</p>
+<p><a id="cart"></a></p>
+<h2 id="cart决策树">CART决策树</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> random_forest.model.decision_tree <span class="hljs-keyword">import</span> Decision_Tree<br><br>model = Decision_Tree(gini_threshold=<span class="hljs-number">0.01</span>, rf_atr_num=-<span class="hljs-number">1</span>)<br><span class="hljs-comment"># gini_threshold  基尼指数阈值，小于此阈值终止划分</span><br><span class="hljs-comment"># rf_atr_num      默认是-1，每次随机选取的属性数目，（用于随机森林）</span><br><br><br>model.train(data, label, dtype)<br><span class="hljs-comment"># data, label 分别是numpy数组格式的数据和对应的label，</span><br><span class="hljs-comment"># 而dtype是一个列表，其对应了每一维属性是离散值还是连续值</span><br><span class="hljs-comment"># 例如数据的数据为：(年龄，分数，性别)。其中年龄，分数为连续值，性别为离散值，则传入的dtype则为:[1,1,0]</span><br><br>out_label = model.query(sample)<br><span class="hljs-comment"># 输入一个样例，输出预测标签</span><br></code></pre></td></tr></table></figure>
+<p><a id="rf"></a></p>
+<h2 id="随机森林">随机森林</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> random_forest.model.random_forest <span class="hljs-keyword">import</span> Random_Forest<br><br>model = Random_Forest(tree_num=<span class="hljs-number">10</span>, random_atr_num=<span class="hljs-number">3</span>, batch=<span class="hljs-number">100</span>, gini_threshold=<span class="hljs-number">0.3</span>)<br><span class="hljs-comment"># tree_num        决策树数量</span><br><span class="hljs-comment"># random_atr_num  每次随机选取的属性个数</span><br><span class="hljs-comment"># batch           每次训练随机选取的样例个数</span><br><br>model.train(data=data, label=label, dtype=dtype)<br><span class="hljs-comment"># data, label 分别是numpy数组格式的数据和对应的label，</span><br><span class="hljs-comment"># 而dtype是一个列表，其对应了每一维属性是离散值还是连续值</span><br><span class="hljs-comment"># 例如数据的数据为：(年龄，分数，性别)。其中年龄，分数为连续值，性别为离散值，则传入的dtype则为:[1,1,0]</span><br><br>out_label = model.query(sample)<br><span class="hljs-comment"># 输入一个样例，输出预测标签</span><br></code></pre></td></tr></table></figure>
+<p><a id="kmeans"></a></p>
+<h2 id="kmeans算法">Kmeans算法</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> model.kmeans <span class="hljs-keyword">import</span> Kmeans<br><span class="hljs-keyword">from</span> utils.draw <span class="hljs-keyword">import</span> draw_scatter<br><span class="hljs-keyword">from</span> model.kmeans <span class="hljs-keyword">import</span> get_data_div<br><br>model = Kmeans(k=<span class="hljs-number">4</span>)<br><span class="hljs-comment"># K为分簇个数</span><br><br>bel, means = model.train(data)<br><span class="hljs-comment"># bel为每个数据的所属类</span><br><span class="hljs-comment"># means为每个簇的中心</span><br><br><br>draw_scatter(get_data_div(bel, data, <span class="hljs-number">4</span>), means)<br><span class="hljs-comment">#画散点图示例</span><br></code></pre></td></tr></table></figure>
+<p>这里演示聚簇示例</p>
+<figure>
+<img onerror="imgOnError(this);" data-fancybox="gallery" src="https://user-images.githubusercontent.com/44296812/200552672-e5e3f832-c564-4e19-85be-120cfab5e58d.png" alt="image" data-caption="image" loading="lazy">
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p><a id="svm"></a></p>
+<h2 id="svm-基于smo算法">SVM 基于SMO算法</h2>
+<p>公式推定：https://kalzncc.github.io/2022/11/19/smo/</p>
+<p>这里吐槽一下，这个东西是真的难啊。一度想要放弃，不过最后还是推出来并实现出来了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> model.support_vector_machine <span class="hljs-keyword">import</span> Support_Vector_Machine<br><span class="hljs-keyword">from</span> utils.utils <span class="hljs-keyword">import</span> read_data<br><span class="hljs-keyword">import</span> model.kernel_func <span class="hljs-keyword">as</span> kf<br><span class="hljs-keyword">from</span> utils.draw <span class="hljs-keyword">import</span> draw_div_line<br><br>svm = Support_Vector_Machine(max_round, delta_alpha_threshold, c, kkt_tolerance, kernel_func)<br><span class="hljs-comment"># max_round             最大优化轮次</span><br><span class="hljs-comment"># delta_alpha_threshold 优化alpha时的最小变化阈值（变化小于此阈值时视为优化失败）</span><br><span class="hljs-comment"># c                     软间隔松弛参数，默认极大值</span><br><span class="hljs-comment"># kkt_tolerance         kkt条件容忍程度阈值（辨别时依据此阈值判定一变量是否满足kkt）</span><br><span class="hljs-comment"># kernel_func           核函数， 在model.kernel_func.py中定义了一些核函数示例，可以参考。默认为线性核</span><br><br>svm.train(data, label)<br><span class="hljs-comment"># data, label 分别是numpy数组格式的数据和对应的label，应为二分类，label只有0，1两种标签</span><br><br>out_f = svm.query(sample)<br><span class="hljs-comment"># 询问样例标签，输出为一个数值，为原f函数输出，如果值小于0应划分至-1，如果值大于0应划分至1</span><br><br>label = np.array([-<span class="hljs-number">1</span> <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> label])<br>draw_div_line(data, label, min_x=-<span class="hljs-number">5</span>, max_x=<span class="hljs-number">15</span>, min_y=-<span class="hljs-number">5</span>, max_y=<span class="hljs-number">15</span>, query=svm.query, sv=svm.sv)<br><span class="hljs-comment"># 画分割线图表</span><br></code></pre></td></tr></table></figure>
+<p>有关核函数，在<a target="_blank" rel="noopener" href="https://github.com/Kalzncc/MachineLearningImpl/blob/master/svm/model/kernel_func.py">model.kernel_func.py</a>有示例，核函数需要定义run方法，传入两个等维度numpy向量，输出一个标量值。这里示例创建一个sigma为1.0的高斯核函数。
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># main.py</span><br><span class="hljs-keyword">from</span> svm.model.kernel_func <span class="hljs-keyword">import</span> Gauss_Kernel<br>svm = Support_Vector_Machine(max_round=<span class="hljs-number">10</span>, kernel_func=Gauss_Kernel(sigma=<span class="hljs-number">1.0</span>))<br><br><span class="hljs-comment"># svm.model.kernel_func.py</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Gauss_Kernel</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, sigma</span>):<br>        self.sigma = sigma<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">run</span>(<span class="hljs-params">self, x, y</span>):<br>        <span class="hljs-keyword">return</span> math.exp(-<span class="hljs-built_in">sum</span>((x - y) * (x - y)) / (<span class="hljs-number">2</span> * self.sigma * self.sigma))<br></code></pre></td></tr></table></figure> 下面是示例，这里带有红色x的样本是支持向量</p>
+<figure>
+<img onerror="imgOnError(this);" data-fancybox="gallery" src="https://user-images.githubusercontent.com/44296812/201329434-c301b4be-f906-4f0c-851f-c66081fae2ce.png" alt="image" data-caption="image" loading="lazy">
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+<p><a id="id3"></a> <a id="knn"></a></p>
+<h2 id="id3决策树和knn算法">ID3决策树和kNN算法</h2>
+<p>https://github.com/Kalzncc/ID3AndKNNImpl</p>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>Kalzn<br>
+        <strong>Link：</strong><a href="http://kalzncc.github.io/2022/12/10/ML-impl/" title="http:&#x2F;&#x2F;kalzncc.github.io&#x2F;2022&#x2F;12&#x2F;10&#x2F;ML-impl&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;kalzncc.github.io&#x2F;2022&#x2F;12&#x2F;10&#x2F;ML-impl&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>除文章中特别注明外，本站所有文章采用 <a href="https://creativecommons.org/licenses/by/3.0/cn/deed.zh" target="_blank">CC BY 3.0 CN</a> 协议进行许可 <div><strong>即在署明文章作者及来源的情况下，您可以将本文用于包括商业目在内的任何用途。</strong></div> <div><strong>除此之外，本文不做正确性担保，本人不对产生的问题负责。</strong></div>
+        
+    </div>
+
+
+  
+  
+  <!-- <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/AI/" rel="tag">AI</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>
+    
+</div> -->
+
+  
+      <div class="nexmoe-post-footer">
+          评论区建设中
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#machinelearningimpl"><span class="toc-number">1.</span> <span class="toc-text">MachineLearningImpl</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ann%E5%9F%BA%E4%BA%8Ec"><span class="toc-number">1.1.</span> <span class="toc-text">ANN（基于C++）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0bayes%E5%9F%BA%E4%BA%8Ec"><span class="toc-number">1.2.</span> <span class="toc-text">朴素bayes（基于C++）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cart%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">1.3.</span> <span class="toc-text">CART决策树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97"><span class="toc-number">1.4.</span> <span class="toc-text">随机森林</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kmeans%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">Kmeans算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svm-%E5%9F%BA%E4%BA%8Esmo%E7%AE%97%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">SVM 基于SMO算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#id3%E5%86%B3%E7%AD%96%E6%A0%91%E5%92%8Cknn%E7%AE%97%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">ID3决策树和kNN算法</span></a></li></ol></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="Search"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1670665705144"></script>
+
+
+
+</body>
+
+</html>
