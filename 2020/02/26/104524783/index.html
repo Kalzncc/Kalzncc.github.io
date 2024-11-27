@@ -28,13 +28,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732717763760">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732718758175">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732717763760">
+    <link rel="stylesheet" href="/css/style.css?v=1732718758175">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732717763760">
+            <link rel="stylesheet" href="/custom.css?v=1732718758175">
         
     
 
@@ -247,7 +247,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732717763760"></script>
+	<script async src="/js/search.js?v=1732718758175"></script>
 
 
 
@@ -486,7 +486,147 @@ mjx-container[display="true"] + br {
     </div>
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
-            <div class="nexmoe-post">
+            <div class="header_anime" id="anime_area">
+    <!-- <div id="debug_info_area"></div> -->
+    <img src="/static/pic/header_img/header_moutain.png" class="header_moutain_block block" id="header_div_mt"/>
+    <img src="/static/pic/header_img/bf3.png" class="bf3_block block" id="header_div_bf3"/>
+    <img src="/static/pic/header_img/bf2.png" class="bf2_block block" id="header_div_bf2"/>
+    <img src="/static/pic/header_img/witch.png" class="fiska_block block" id="header_div_fiska"/>
+    <img src="/static/pic/header_img/bf1.png" class="bf1_block block" id="header_div_bf1"/>
+    <img src="/static/pic/header_img/bf4.png" class="bf4_block block" id="header_div_bf4"/>
+    
+</div>
+
+<script>
+
+function set_block_position(rate, fullWidth) {
+    fiska_block = document.getElementById("header_div_fiska")
+    bf1_block = document.getElementById("header_div_bf1")
+    bf2_block = document.getElementById("header_div_bf2")
+    bf3_block = document.getElementById("header_div_bf3")
+    bf4_block = document.getElementById("header_div_bf4")
+    back_m_block = document.getElementById("header_div_mt")
+    back_block = document.getElementById("anime_area")
+    if (rate == -1) {
+        console.log("Heelo!!!")
+        switch_anime(true)
+        fiska_block.style.left = (1.0 * fullWidth * 0.4) + 'px'
+        fiska_block.style.transform = 'rotate(0deg)'
+        bf1_block.style.left = (1.0 * fullWidth * 0.7) + 'px'
+        bf2_block.style.left = (1.0 * fullWidth * 0.6) + 'px'
+        bf3_block.style.left = (1.0 * fullWidth * 0.2) + 'px'
+        bf4_block.style.left = (1.0 * fullWidth * 0.25) + 'px'
+        back_block.style.backgroundPosition  = '-100px -110px'
+        back_m_block.style.left = '-120px'
+    } else if (rate < 0) {
+        rate = -rate
+        fiska_block.style.left = (1.0 * fullWidth * 0.4 * (1 - rate * 0.8)) + 'px'
+        bf1_block.style.left = (1.0 * fullWidth * 0.7 * (1 - rate * 0.4)) + 'px'
+        bf2_block.style.left =  (1.0 * fullWidth * 0.6 * (1 - rate * 0.02)) + 'px'
+        bf3_block.style.left =  (1.0 * fullWidth * 0.2 * (1 - rate * 0.02)) + 'px'
+        bf4_block.style.left =  (1.0 * fullWidth * 0.25 * (1 - rate * 0.85)) + 'px'
+        back_m_block.style.left = ((-120) - (rate * 30)) + 'px'
+        back_block.style.backgroundPosition  =(-100-(rate * 10)) + 'px -110px'
+        if (rate < 0.3) {
+            fiska_block.style.transform = 'rotate(' + 40 * rate  + 'deg)'
+        } else {
+            fiska_block.style.transform = 'rotate(' + 40 * 0.3  + 'deg)'
+        }
+        
+    } else {
+        fiska_block.style.left = (1.0 * fullWidth * (0.4 + (rate * 0.8) * 0.4)) + 'px'
+        bf1_block.style.left = (1.0 * fullWidth * (0.7 + rate * 0.1)) + 'px'
+        bf2_block.style.left = (1.0 * fullWidth * (0.6 + rate * 0.02)) + 'px'
+        bf3_block.style.left = (1.0 * fullWidth * (0.2 + rate * 0.02)) + 'px'
+        bf4_block.style.left = (1.0 * fullWidth * (0.25 + rate * 0.15)) + 'px'
+        back_block.style.backgroundPosition  = (-100 + (rate * 10)) + 'px -110px'
+        back_m_block.style.left = ((-120) + (rate * 20)) + 'px'
+        if (rate < 0.3) {
+            fiska_block.style.transform = 'rotate(' + -25 * rate  + 'deg)'
+        } else {
+            fiska_block.style.transform = 'rotate(' + -25 * 0.3  + 'deg)'
+        }
+    }
+}
+function switch_anime(flag) {
+    blocks = document.getElementsByClassName("block")
+    back_block = document.getElementById("anime_area")
+    if (flag) {
+        for (var i = 0; i < blocks.length; i++) {
+            blocks[i].style.transition = 'left 0.5s ease-in-out 0.0s, transform 0.5s ease-in-out 0.0s'
+        }
+        back_block.style.transition = 'background-position 0.5s ease-in-out 0.0s'
+        // fiska_block.style.transition = 'left 0.5s ease-in-out 0.0s, transform 0.5s ease-in-out 0.0s'
+        // bf1_block.style.transition = 'left 0.5s ease-in-out 0.0s, transform 0.5s ease-in-out 0.0s'
+        // bf1_block.style.transition = 'left 0.5s ease-in-out 0.0s, transform 0.5s ease-in-out 0.0s'
+    } else {
+        for (var i = 0; i < blocks.length; i++) {
+            blocks[i].style.transition = ''
+        }
+        back_block.style.transition = ''
+        // fiska_block.style.transition = ''
+        // bf1_block.style.transition = ''
+    }
+}
+function header_anime() {
+    var status = "-out"
+    var enterX = 0
+    var enterY = 0
+    var curX = 0
+    var curY = 0
+    var inFlag = false
+    
+    const resizeObserver = new ResizeObserver(entries => {
+        for (let entry of entries) {
+            const { width, height } = entry.contentRect;
+            set_block_position(0, width)
+        }
+    });
+    resizeObserver.observe(document.getElementById("anime_area"))
+
+    document.addEventListener('mousemove', function(event) {
+        ani_div = document.getElementById("anime_area")
+        var text = 'Mouse position:' + event.clientX + "," + event.clientY + status
+        curX = event.clientX
+        curY = event.clientY
+        if (!inFlag) 
+            return
+        var curDivWith = ani_div.offsetWidth
+        text += " (Full Width " + curDivWith + ") "
+        var movePx = curX - enterX
+        if (movePx < 0) {
+            text += " : Move <- " + (-movePx)
+        } else {
+            text += " : Move -> " + (movePx)
+        }
+        left_block = document.getElementById("left_padding_block")
+        right_block = document.getElementById("right_padding_block")
+
+        var moveRate = 1.0 * movePx / curDivWith
+        set_block_position(moveRate, curDivWith)
+
+
+        document.getElementById("debug_info_area").innerText = text
+    });
+    document.getElementById("anime_area").addEventListener('mouseenter', function(event) {
+        enterX = curX
+        enterY = curY
+        switch_anime(false)
+        console.log("in in pos: " + enterX + "," + enterY)
+        inFlag = true
+    })
+    document.getElementById("anime_area").addEventListener('mouseleave', function(event) {
+        console.log("out")
+        inFlag = false
+        ani_div = document.getElementById("anime_area")
+        var curDivWith = ani_div.offsetWidth
+        set_block_position(-1, curDivWith)
+    })
+}
+header_anime()
+</script>
+
+<div class="nexmoe-post">
 
   <article>
     
@@ -647,7 +787,7 @@ mjx-container[display="true"] + br {
 
  
 
-<script async src="/js/app.js?v=1732717763768"></script>
+<script async src="/js/app.js?v=1732718758182"></script>
 
 
 
