@@ -941,6 +941,77 @@ body {
   background: rgba(31,34,36,0.925);
   box-shadow: 0 1em 3em 0.5em rgba(0,0,0,0.25);
 }
+.fiska_block {
+  height: 120px;
+  float: center;
+  position: absolute;
+  left: 200px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  animation: floatBlock 10s infinite ease-in-out;
+}
+.bf1_block {
+  height: 60px;
+  float: center;
+  position: absolute;
+  left: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  animation: floatBlockBf 8s infinite ease-in-out;
+}
+.bf2_block {
+  height: 70px;
+  float: center;
+  position: absolute;
+  left: 480px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  animation: floatBlockBf 13s infinite ease-in-out;
+}
+.bf3_block {
+  height: 40px;
+  float: center;
+  position: absolute;
+  left: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  animation: floatBlockBf 8s infinite ease-in-out;
+}
+.bf4_block {
+  height: 170px;
+  float: center;
+  position: absolute;
+  left: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  animation: floatBlockBf 8s infinite ease-in-out;
+}
+.header_moutain_block {
+  height: 240px;
+  float: center;
+  position: relative;
+/* clip-path: inset(100px 0px); */
+  left: -90px;
+  top: 0px;
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.header_anime {
+  background-image: url("/static/pic/header_img/header_back.png");
+  background-size: cover; /* 背景图片覆盖整个元素 */
+  background-position: -100px -110px; /* 背景图片居中 */
+  background-repeat: no-repeat; /* 背景图片不重复 */
+  background-size: 125%;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-radius: 16px;
+  border: 3px solid #172c36;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  height: 120px; /* 使容器的高度为视口高度 */
+}
 #nexmoe-background .nexmoe-bg {
   opacity: 0.3;
   background-size: cover;
@@ -1641,6 +1712,86 @@ photos img {
 }
 .gallery-pro > * img {
   width: 100%;
+}
+@-moz-keyframes floatBlockBf {
+  0%, 100% {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+}
+@-webkit-keyframes floatBlockBf {
+  0%, 100% {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+}
+@-o-keyframes floatBlockBf {
+  0%, 100% {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+}
+@keyframes floatBlockBf {
+  0%, 100% {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+}
+@-moz-keyframes floatBlock {
+  0%, 100% {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: 0px;
+    margin-bottom: 45px;
+  }
+}
+@-webkit-keyframes floatBlock {
+  0%, 100% {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: 0px;
+    margin-bottom: 45px;
+  }
+}
+@-o-keyframes floatBlock {
+  0%, 100% {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: 0px;
+    margin-bottom: 45px;
+  }
+}
+@keyframes floatBlock {
+  0%, 100% {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  50% {
+    margin-top: 0px;
+    margin-bottom: 45px;
+  }
 }
 @-moz-keyframes shake-it {
   0% {

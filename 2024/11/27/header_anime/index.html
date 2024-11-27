@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>B站同款可动头图做法⬆️ - Kalzn的个人博客</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"> <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <meta name="description" content="B站同款可动头图做法    背景 B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能便摸索便搞。不过最终还是成功搞出来了，感觉效果还不错。 原理和准备 可动头图是由多个图层组合而来的，然后每个图层的位移不同，营造一种前后深度。这里我是用自设形象跑的AI，以下是原图。使用模型是自搭建的SD服务，模型是waiANINSFWPONYXL，骑扫帚融了Lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="B站同款可动头图做法⬆️">
+<meta property="og:url" content="http://kalzncc.github.io/2024/11/27/header_anime/index.html">
+<meta property="og:site_name" content="Kalzn的个人博客">
+<meta property="og:description" content="B站同款可动头图做法    背景 B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能便摸索便搞。不过最终还是成功搞出来了，感觉效果还不错。 原理和准备 可动头图是由多个图层组合而来的，然后每个图层的位移不同，营造一种前后深度。这里我是用自设形象跑的AI，以下是原图。使用模型是自搭建的SD服务，模型是waiANINSFWPONYXL，骑扫帚融了Lo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://kalzncc.github.io/2024/11/27/header_anime/fiska.png">
+<meta property="og:image" content="http://kalzncc.github.io/2024/11/27/header_anime/header_back.png">
+<meta property="og:image" content="http://kalzncc.github.io/2024/11/27/header_anime/layer.png">
+<meta property="article:published_time" content="2024-11-27T13:49:00.000Z">
+<meta property="article:modified_time" content="2024-11-27T14:22:39.182Z">
+<meta property="article:author" content="Kalzn">
+<meta property="article:tag" content="置顶">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kalzncc.github.io/2024/11/27/header_anime/fiska.png">
+    
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732717763582">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1732717763582">
+
+    
+        
+            <link rel="stylesheet" href="/custom.css?v=1732717763582">
+        
+    
+
+
+
+    <script src="js/echarts.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(/static/pic/back.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Kalzn" class="mdui-btn mdui-btn-icon"><img src="/static/pic/fiska_taluo.png" alt="Kalzn"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Kalzn">
+            <img src="/static/pic/fiska_taluo.png" alt="Kalzn" alt="Kalzn">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>20</div>
+        <div><span>标签</span>13</div>
+        <div><span>分类</span>7</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives.html" title="博客归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                博客归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35802619" title="CSDN博客">
+            <i class="mdui-list-item-icon nexmoefont icon-ellipsis"></i>
+            <div class="mdui-list-item-content">
+                CSDN博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/img_src" title="戳我看荧">
+            <i class="mdui-list-item-icon nexmoefont icon-tuchong"></i>
+            <div class="mdui-list-item-content">
+                戳我看荧
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/2022/11/19/hello-world/" title="博客迁移说明">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                博客迁移说明
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/2024/11/26/about-me/" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1732717763582"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/28967505"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/Kalzncc"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/ai-te-meyi-xia"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/AI/">AI</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/八股/">八股</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/博客改造/">博客改造</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/工程/">工程</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/杂文/">杂文</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法竞赛/">算法竞赛</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/项目/">项目</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/ICPC/" style="font-size: 16.67px;">ICPC</a> <a href="/tags/oj/" style="font-size: 10px;">oj</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%85%AB%E8%82%A1/" style="font-size: 16.67px;">八股</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">图论</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.33px;">工具</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 16.67px;">总结</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 16.67px;">置顶</a> <a href="/tags/%E8%93%9D%E6%A1%A5/" style="font-size: 10px;">蓝桥</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(13);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/11/27/header_anime/">B站同款可动头图做法⬆️</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/27/csdn2local/">Csdn2Local:将csdn的博客保存到本地markdown格式</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/26/se-dm/">软件工程与设计模式相关，Spring简介</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/26/about-me/">关于我</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/09/137570823/">面试-数据库基础以及MySql、ClickHost、Redis简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://www.squirt1e.top/" target="_blank" >
+                    <img src="/static/yjl.png" alt="Squirt1e(某CTF佬)"></img>
+                    <p>Squirt1e(某CTF佬)</p>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://wu3227834.github.io/" target="_blank" >
+                    <img src="/static/wdj.png" alt="小布丁(某测试佬)"></img>
+                    <p>小布丁(某测试佬)</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 Kalzn
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次 </span><span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次 </span>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="/static/pic/ai/3.jpg" alt="B站同款可动头图做法⬆️" loading="lazy">
+            <h1>B站同款可动头图做法⬆️</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年11月27日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
+        
+        
+
+        <!-- 添加label列举 -->
+        <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a>
+    
+</div>
+
+    </div>
+    
+    
+    
+    
+    
+
+</div>
+
+    <h1 id="b站同款可动头图做法">B站同款可动头图做法</h1>
+<video width="500" height="240" controls="">
+<source src="./header_demo.mp4" type="video/mp4">
+</video>
+<h2 id="背景">背景</h2>
+<p>B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能便摸索便搞。不过最终还是成功搞出来了，感觉效果还不错。</p>
+<h2 id="原理和准备">原理和准备</h2>
+<p>可动头图是由多个图层组合而来的，然后每个图层的位移不同，营造一种前后深度。这里我是用自设形象跑的AI，以下是原图。使用模型是自搭建的SD服务，模型是<code>waiANINSFWPONYXL</code>，骑扫帚融了Lora:<code>riding_broom</code>。然后还需要一个背景，背景也是用这个基模跑的。 <img onerror="imgOnError(this);" data-fancybox="gallery" src="./fiska.png" alt="头图原图" data-caption="头图原图" loading="lazy"> <img onerror="imgOnError(this);" data-fancybox="gallery" src="./header_back.png" alt="背景图" data-caption="背景图" loading="lazy"></p>
+<p>然后利用PS抠图，将图片分出几个可动图层，注意这里要把背景弄成透明的，按照png格式保存。 <img onerror="imgOnError(this);" data-fancybox="gallery" src="./layer.png" alt="背景图" data-caption="背景图" loading="lazy"></p>
+<h2 id="动画">动画</h2>
+<p>这里通过监听<code>mouseenter</code>,<code>mousemove</code>,<code>mouseleave</code>三者动作，具体而言：</p>
+<ol type="1">
+<li><p><code>mouseenter</code>当光标进入头图区域时，将过渡动画关闭，并记录进入时的横坐标，并开始计算光标相对进入时的坐标位移。</p></li>
+<li><p><code>mousemove</code>当光标在移动时，记录光标相对进入头图时的坐标位移，然后根据位移大小更新各个图层的位移大小。</p></li>
+<li><p><code>mouseleave</code>当光标退出头图区域时，将过渡动画打开，并将所有图层归为初始位置。</p></li>
+</ol>
+<p>此外对每一个图层加入上下浮动的动画，并在人物跟随光标移动时加入旋转效果。</p>
+<p>这里要注意的是，离镜头越远的图层的位移速度越小。</p>
+<h2 id="参考源码">参考源码</h2>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header_anime"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"anime_area"</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- 各图层 --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/pic/header_img/header_moutain.png"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header_moutain_block block"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header_div_mt"</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/pic/header_img/bf3.png"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bf3_block block"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header_div_bf3"</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/pic/header_img/bf2.png"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bf2_block block"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header_div_bf2"</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/pic/header_img/witch.png"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fiska_block block"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header_div_fiska"</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/pic/header_img/bf1.png"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bf1_block block"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header_div_bf1"</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/pic/header_img/bf4.png"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bf4_block block"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header_div_bf4"</span>/&gt;</span><br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">set_block_position</span>(<span class="hljs-params">rate, fullWidth</span>) {<br>    fiska_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"header_div_fiska"</span>)<br>    bf1_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"header_div_bf1"</span>)<br>    bf2_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"header_div_bf2"</span>)<br>    bf3_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"header_div_bf3"</span>)<br>    bf4_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"header_div_bf4"</span>)<br>    back_m_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"header_div_mt"</span>)<br>    back_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"anime_area"</span>)<br>    <span class="hljs-keyword">if</span> (rate == -<span class="hljs-number">1</span>) {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"Heelo!!!"</span>)<br>        <span class="hljs-title function_">switch_anime</span>(<span class="hljs-literal">true</span>)<br>        fiska_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.4</span>) + <span class="hljs-string">'px'</span><br>        fiska_block.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">'rotate(0deg)'</span><br>        bf1_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.7</span>) + <span class="hljs-string">'px'</span><br>        bf2_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.6</span>) + <span class="hljs-string">'px'</span><br>        bf3_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.2</span>) + <span class="hljs-string">'px'</span><br>        bf4_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.25</span>) + <span class="hljs-string">'px'</span><br>        back_block.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundPosition</span>  = <span class="hljs-string">'-100px -110px'</span><br>        back_m_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-string">'-120px'</span><br>    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (rate &lt; <span class="hljs-number">0</span>) {<br>        rate = -rate<br>        fiska_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.4</span> * (<span class="hljs-number">1</span> - rate * <span class="hljs-number">0.8</span>)) + <span class="hljs-string">'px'</span><br>        bf1_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.7</span> * (<span class="hljs-number">1</span> - rate * <span class="hljs-number">0.4</span>)) + <span class="hljs-string">'px'</span><br>        bf2_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> =  (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.6</span> * (<span class="hljs-number">1</span> - rate * <span class="hljs-number">0.02</span>)) + <span class="hljs-string">'px'</span><br>        bf3_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> =  (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.2</span> * (<span class="hljs-number">1</span> - rate * <span class="hljs-number">0.02</span>)) + <span class="hljs-string">'px'</span><br>        bf4_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> =  (<span class="hljs-number">1.0</span> * fullWidth * <span class="hljs-number">0.25</span> * (<span class="hljs-number">1</span> - rate * <span class="hljs-number">0.85</span>)) + <span class="hljs-string">'px'</span><br>        back_m_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = ((-<span class="hljs-number">120</span>) - (rate * <span class="hljs-number">30</span>)) + <span class="hljs-string">'px'</span><br>        back_block.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundPosition</span>  =(-<span class="hljs-number">100</span>-(rate * <span class="hljs-number">10</span>)) + <span class="hljs-string">'px -110px'</span><br>        <span class="hljs-keyword">if</span> (rate &lt; <span class="hljs-number">0.3</span>) {<br>            fiska_block.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">'rotate('</span> + <span class="hljs-number">40</span> * rate  + <span class="hljs-string">'deg)'</span><br>        } <span class="hljs-keyword">else</span> {<br>            fiska_block.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">'rotate('</span> + <span class="hljs-number">40</span> * <span class="hljs-number">0.3</span>  + <span class="hljs-string">'deg)'</span><br>        }<br>        <br>    } <span class="hljs-keyword">else</span> {<br>        fiska_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * (<span class="hljs-number">0.4</span> + (rate * <span class="hljs-number">0.8</span>) * <span class="hljs-number">0.4</span>)) + <span class="hljs-string">'px'</span><br>        bf1_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * (<span class="hljs-number">0.7</span> + rate * <span class="hljs-number">0.1</span>)) + <span class="hljs-string">'px'</span><br>        bf2_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * (<span class="hljs-number">0.6</span> + rate * <span class="hljs-number">0.02</span>)) + <span class="hljs-string">'px'</span><br>        bf3_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * (<span class="hljs-number">0.2</span> + rate * <span class="hljs-number">0.02</span>)) + <span class="hljs-string">'px'</span><br>        bf4_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = (<span class="hljs-number">1.0</span> * fullWidth * (<span class="hljs-number">0.25</span> + rate * <span class="hljs-number">0.15</span>)) + <span class="hljs-string">'px'</span><br>        back_block.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundPosition</span>  = (-<span class="hljs-number">100</span> + (rate * <span class="hljs-number">10</span>)) + <span class="hljs-string">'px -110px'</span><br>        back_m_block.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = ((-<span class="hljs-number">120</span>) + (rate * <span class="hljs-number">20</span>)) + <span class="hljs-string">'px'</span><br>        <span class="hljs-keyword">if</span> (rate &lt; <span class="hljs-number">0.3</span>) {<br>            fiska_block.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">'rotate('</span> + -<span class="hljs-number">25</span> * rate  + <span class="hljs-string">'deg)'</span><br>        } <span class="hljs-keyword">else</span> {<br>            fiska_block.<span class="hljs-property">style</span>.<span class="hljs-property">transform</span> = <span class="hljs-string">'rotate('</span> + -<span class="hljs-number">25</span> * <span class="hljs-number">0.3</span>  + <span class="hljs-string">'deg)'</span><br>        }<br>    }<br>}<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">switch_anime</span>(<span class="hljs-params">flag</span>) {<br>    blocks = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByClassName</span>(<span class="hljs-string">"block"</span>)<br>    back_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"anime_area"</span>)<br>    <span class="hljs-keyword">if</span> (flag) {<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; blocks.<span class="hljs-property">length</span>; i++) {<br>            blocks[i].<span class="hljs-property">style</span>.<span class="hljs-property">transition</span> = <span class="hljs-string">'left 0.5s ease-in-out 0.0s, transform 0.5s ease-in-out 0.0s'</span><br>        }<br>        back_block.<span class="hljs-property">style</span>.<span class="hljs-property">transition</span> = <span class="hljs-string">'background-position 0.5s ease-in-out 0.0s'</span><br>        <span class="hljs-comment">// fiska_block.style.transition = 'left 0.5s ease-in-out 0.0s, transform 0.5s ease-in-out 0.0s'</span><br>        <span class="hljs-comment">// bf1_block.style.transition = 'left 0.5s ease-in-out 0.0s, transform 0.5s ease-in-out 0.0s'</span><br>        <span class="hljs-comment">// bf1_block.style.transition = 'left 0.5s ease-in-out 0.0s, transform 0.5s ease-in-out 0.0s'</span><br>    } <span class="hljs-keyword">else</span> {<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; blocks.<span class="hljs-property">length</span>; i++) {<br>            blocks[i].<span class="hljs-property">style</span>.<span class="hljs-property">transition</span> = <span class="hljs-string">''</span><br>        }<br>        back_block.<span class="hljs-property">style</span>.<span class="hljs-property">transition</span> = <span class="hljs-string">''</span><br>        <span class="hljs-comment">// fiska_block.style.transition = ''</span><br>        <span class="hljs-comment">// bf1_block.style.transition = ''</span><br>    }<br>}<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">header_anime</span>(<span class="hljs-params"></span>) {<br>    <span class="hljs-keyword">var</span> status = <span class="hljs-string">"-out"</span><br>    <span class="hljs-keyword">var</span> enterX = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">var</span> enterY = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">var</span> curX = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">var</span> curY = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">var</span> inFlag = <span class="hljs-literal">false</span><br>    <br>    <span class="hljs-keyword">const</span> resizeObserver = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResizeObserver</span>(<span class="hljs-function"><span class="hljs-params">entries</span> =&gt;</span> {<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> entry <span class="hljs-keyword">of</span> entries) {<br>            <span class="hljs-keyword">const</span> { width, height } = entry.<span class="hljs-property">contentRect</span>;<br>            <span class="hljs-title function_">set_block_position</span>(<span class="hljs-number">0</span>, width)<br>        }<br>    });<br>    resizeObserver.<span class="hljs-title function_">observe</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"anime_area"</span>))<br><br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">'mousemove'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) {<br>        ani_div = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"anime_area"</span>)<br>        <span class="hljs-keyword">var</span> text = <span class="hljs-string">'Mouse position:'</span> + event.<span class="hljs-property">clientX</span> + <span class="hljs-string">","</span> + event.<span class="hljs-property">clientY</span> + status<br>        curX = event.<span class="hljs-property">clientX</span><br>        curY = event.<span class="hljs-property">clientY</span><br>        <span class="hljs-keyword">if</span> (!inFlag) <br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">var</span> curDivWith = ani_div.<span class="hljs-property">offsetWidth</span><br>        text += <span class="hljs-string">" (Full Width "</span> + curDivWith + <span class="hljs-string">") "</span><br>        <span class="hljs-keyword">var</span> movePx = curX - enterX<br>        <span class="hljs-keyword">if</span> (movePx &lt; <span class="hljs-number">0</span>) {<br>            text += <span class="hljs-string">" : Move &lt;- "</span> + (-movePx)<br>        } <span class="hljs-keyword">else</span> {<br>            text += <span class="hljs-string">" : Move -&gt; "</span> + (movePx)<br>        }<br>        left_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"left_padding_block"</span>)<br>        right_block = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"right_padding_block"</span>)<br><br>        <span class="hljs-keyword">var</span> moveRate = <span class="hljs-number">1.0</span> * movePx / curDivWith<br>        <span class="hljs-title function_">set_block_position</span>(moveRate, curDivWith)<br><br><br>        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"debug_info_area"</span>).<span class="hljs-property">innerText</span> = text<br>    });<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"anime_area"</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">'mouseenter'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) {<br>        enterX = curX<br>        enterY = curY<br>        <span class="hljs-title function_">switch_anime</span>(<span class="hljs-literal">false</span>)<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"in in pos: "</span> + enterX + <span class="hljs-string">","</span> + enterY)<br>        inFlag = <span class="hljs-literal">true</span><br>    })<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"anime_area"</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">'mouseleave'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"out"</span>)<br>        inFlag = <span class="hljs-literal">false</span><br>        ani_div = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">"anime_area"</span>)<br>        <span class="hljs-keyword">var</span> curDivWith = ani_div.<span class="hljs-property">offsetWidth</span><br>        <span class="hljs-title function_">set_block_position</span>(-<span class="hljs-number">1</span>, curDivWith)<br>    })<br>}<br><span class="hljs-title function_">header_anime</span>()<br></code></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.fiska_block</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">120px</span>;<br>    <span class="hljs-attribute">float</span>: center;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">animation</span>: floatBlock <span class="hljs-number">10s</span> infinite ease-in-out;<br>    <br>}<br><br><span class="hljs-selector-class">.bf1_block</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">60px</span>;<br>    <span class="hljs-attribute">float</span>: center;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50px</span>;<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">animation</span>: floatBlockBf <span class="hljs-number">8s</span> infinite ease-in-out;<br>    <br>}<br><span class="hljs-selector-class">.bf2_block</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">70px</span>;<br>    <span class="hljs-attribute">float</span>: center;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">480px</span>;<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">animation</span>: floatBlockBf <span class="hljs-number">13s</span> infinite ease-in-out;<br>}<br><span class="hljs-selector-class">.bf3_block</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">40px</span>;<br>    <span class="hljs-attribute">float</span>: center;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50px</span>;<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">animation</span>: floatBlockBf <span class="hljs-number">8s</span> infinite ease-in-out;<br>}<br><span class="hljs-selector-class">.bf4_block</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">170px</span>;<br>    <span class="hljs-attribute">float</span>: center;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50px</span>;<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">animation</span>: floatBlockBf <span class="hljs-number">8s</span> infinite ease-in-out;<br>}<br><span class="hljs-selector-class">.header_moutain_block</span> {<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">240px</span>;<br>    <span class="hljs-attribute">float</span>: center;<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-comment">/* clip-path: inset(100px 0px); */</span><br>    <span class="hljs-attribute">left</span>: -<span class="hljs-number">90px</span>;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;<br><br>}<br><br><span class="hljs-selector-class">.header_anime</span> {<br>    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'/static/pic/header_img/header_back.png'</span>);<br>    <span class="hljs-attribute">background-size</span>: cover; <span class="hljs-comment">/* 背景图片覆盖整个元素 */</span><br>    <span class="hljs-attribute">background-position</span>: -<span class="hljs-number">100px</span> -<span class="hljs-number">110px</span>; <span class="hljs-comment">/* 背景图片居中 */</span><br>    <span class="hljs-attribute">background-repeat</span>: no-repeat; <span class="hljs-comment">/* 背景图片不重复 */</span><br>    <span class="hljs-attribute">background-size</span>: <span class="hljs-number">125%</span>;<br>    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">20px</span><br>    margin-bottom: <span class="hljs-number">30px</span>;<br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">16px</span>;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">3px</span> solid <span class="hljs-built_in">rgb</span>(<span class="hljs-number">23</span>,<span class="hljs-number">44</span>,<span class="hljs-number">54</span>);<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">overflow</span>: hidden;<br>    <span class="hljs-attribute">align-items</span>: center;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">120px</span>; <span class="hljs-comment">/* 使容器的高度为视口高度 */</span><br>}<br><br><span class="hljs-keyword">@keyframes</span> floatBlockBf {<br>  <span class="hljs-number">0%</span>, <span class="hljs-number">100%</span> {<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">5px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;<br>  }<br>  <span class="hljs-number">50%</span> {<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">20px</span>;<br>  }<br>}<br><br><br><span class="hljs-keyword">@keyframes</span> floatBlock {<br>  <span class="hljs-number">0%</span>, <span class="hljs-number">100%</span> {<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>;<br>  }<br>  <span class="hljs-number">50%</span> {<br>    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0px</span>;<br>    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">45px</span>;<br>  }<br>}<br></code></pre></td></tr></table></figure>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Kalzn<br>
+        <strong>本文链接：</strong><a href="http://kalzncc.github.io/2024/11/27/header_anime/" title="http:&#x2F;&#x2F;kalzncc.github.io&#x2F;2024&#x2F;11&#x2F;27&#x2F;header_anime&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;kalzncc.github.io&#x2F;2024&#x2F;11&#x2F;27&#x2F;header_anime&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>除文章中特别注明外，本站所有文章采用 <a href="https://creativecommons.org/licenses/by/3.0/cn/deed.zh" target="_blank">CC BY 3.0 CN</a> 协议进行许可 <div><strong>即在署明文章作者及来源的情况下，您可以将本文用于包括商业目在内的任何用途。</strong></div> <div><strong>除此之外，本文不做正确性担保，本人不对产生的问题负责。</strong></div>
+        
+    </div>
+
+
+  
+  
+  <!-- <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%BD%AE%E9%A1%B6/" rel="tag">置顶</a>
+    
+</div> -->
+
+  
+      <div class="nexmoe-post-footer">
+          评论区建设中
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#b%E7%AB%99%E5%90%8C%E6%AC%BE%E5%8F%AF%E5%8A%A8%E5%A4%B4%E5%9B%BE%E5%81%9A%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">B站同款可动头图做法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E5%92%8C%E5%87%86%E5%A4%87"><span class="toc-number">1.2.</span> <span class="toc-text">原理和准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-number">1.3.</span> <span class="toc-text">动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%BA%90%E7%A0%81"><span class="toc-number">1.4.</span> <span class="toc-text">参考源码</span></a></li></ol></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
+
+ 
+
+<script async src="/js/app.js?v=1732717763600"></script>
+
+
+
+</body>
+
+</html>
