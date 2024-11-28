@@ -10,21 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.2.0/styles/github.min.css"> <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
     <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-    <meta name="description" content="B站同款可动头图做法    背景 B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能便摸索便搞。不过最终还是成功搞出来了，感觉效果还不错。 原理和准备 可动头图是由多个图层组合而来的，然后每个图层的位移不同，营造一种前后深度。这里我是用自设形象跑的AI，以下是原图。使用模型是自搭建的SD服务，模型是waiANINSFWPONYXL，骑扫帚融了Lo">
+    <meta name="description" content="B站同款可动头图做法    背景 B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能边摸索边搞。不过最终还是成功搞出来了，感觉效果还不错。 原理和准备 可动头图是由多个图层组合而来的，然后每个图层的位移不同，营造一种前后深度。这里我是用自设形象跑的AI，以下是原图。使用模型是自搭建的SD服务，模型是waiANINSFWPONYXL，骑扫帚融了Lo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="B站同款可动头图做法⬆️">
 <meta property="og:url" content="http://kalzncc.github.io/2024/11/27/header_anime/index.html">
 <meta property="og:site_name" content="Kalzn的个人博客">
-<meta property="og:description" content="B站同款可动头图做法    背景 B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能便摸索便搞。不过最终还是成功搞出来了，感觉效果还不错。 原理和准备 可动头图是由多个图层组合而来的，然后每个图层的位移不同，营造一种前后深度。这里我是用自设形象跑的AI，以下是原图。使用模型是自搭建的SD服务，模型是waiANINSFWPONYXL，骑扫帚融了Lo">
+<meta property="og:description" content="B站同款可动头图做法    背景 B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能边摸索边搞。不过最终还是成功搞出来了，感觉效果还不错。 原理和准备 可动头图是由多个图层组合而来的，然后每个图层的位移不同，营造一种前后深度。这里我是用自设形象跑的AI，以下是原图。使用模型是自搭建的SD服务，模型是waiANINSFWPONYXL，骑扫帚融了Lo">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://kalzncc.github.io/2024/11/27/header_anime/fiska.png">
 <meta property="og:image" content="http://kalzncc.github.io/2024/11/27/header_anime/header_back.png">
 <meta property="og:image" content="http://kalzncc.github.io/2024/11/27/header_anime/layer.png">
 <meta property="article:published_time" content="2024-11-27T13:49:00.000Z">
-<meta property="article:modified_time" content="2024-11-27T14:22:39.182Z">
+<meta property="article:modified_time" content="2024-11-28T03:36:59.533Z">
 <meta property="article:author" content="Kalzn">
-<meta property="article:tag" content="置顶">
 <meta property="article:tag" content="工具">
+<meta property="article:tag" content="置顶">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://kalzncc.github.io/2024/11/27/header_anime/fiska.png">
     
@@ -32,13 +32,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732718758010">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732773219948">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732718758010">
+    <link rel="stylesheet" href="/css/style.css?v=1732773219948">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732718758010">
+            <link rel="stylesheet" href="/custom.css?v=1732773219948">
         
     
 
@@ -166,7 +166,7 @@ mjx-container[display="true"] + br {
 
 <body class="mdui-drawer-body-left">
     <div id="nexmoe-background">
-        <div class="nexmoe-bg" style="background-image: url(/static/pic/back.jpg)"></div>
+        <div class="nexmoe-bg" style="background-image: url(/static/pic/header_img/header_back.png)"></div>
         <div class="mdui-appbar mdui-shadow-0">
             <div class="mdui-toolbar">
                 <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
@@ -211,7 +211,7 @@ mjx-container[display="true"] + br {
             </div>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/img_src" title="戳我看荧">
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/img_src.html" title="戳我看荧">
             <i class="mdui-list-item-icon nexmoefont icon-tuchong"></i>
             <div class="mdui-list-item-content">
                 戳我看荧
@@ -251,7 +251,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732718758010"></script>
+	<script async src="/js/search.js?v=1732773219949"></script>
 
 
 
@@ -377,7 +377,7 @@ mjx-container[display="true"] + br {
         
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/ICPC/" style="font-size: 16.67px;">ICPC</a> <a href="/tags/oj/" style="font-size: 10px;">oj</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%85%AB%E8%82%A1/" style="font-size: 16.67px;">八股</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">图论</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.33px;">工具</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 16.67px;">总结</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 16.67px;">置顶</a> <a href="/tags/%E8%93%9D%E6%A1%A5/" style="font-size: 10px;">蓝桥</a>
+      <a href="/tags/ICPC/" style="font-size: 16.67px;">ICPC</a> <a href="/tags/oj/" style="font-size: 10px;">oj</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%85%AB%E8%82%A1/" style="font-size: 16.67px;">八股</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 10px;">图论</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.33px;">工具</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 16.67px;">总结</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a> <a href="/tags/%E7%BD%AE%E9%A1%B6/" style="font-size: 10px;">置顶</a> <a href="/tags/%E8%93%9D%E6%A1%A5/" style="font-size: 10px;">蓝桥</a>
     </div>
     
       <script>
@@ -489,8 +489,7 @@ mjx-container[display="true"] + br {
 </div><!-- .nexmoe-drawer -->
     </div>
     <div id="nexmoe-content">
-        <div class="nexmoe-primary">
-            <div class="header_anime" id="anime_area">
+        <div class="header_anime" id="anime_area">
     <!-- <div id="debug_info_area"></div> -->
     <img src="/static/pic/header_img/header_moutain.png" class="header_moutain_block block" id="header_div_mt"/>
     <img src="/static/pic/header_img/bf3.png" class="bf3_block block" id="header_div_bf3"/>
@@ -629,6 +628,8 @@ function header_anime() {
 }
 header_anime()
 </script>
+        <div class="nexmoe-primary">
+            
 
 <div class="nexmoe-post">
 
@@ -670,7 +671,7 @@ header_anime()
 <source src="./header_demo.mp4" type="video/mp4">
 </video>
 <h2 id="背景">背景</h2>
-<p>B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能便摸索便搞。不过最终还是成功搞出来了，感觉效果还不错。</p>
+<p>B站很久之前的头图都变成了可动的，感觉很漂亮，于是就想自己复现一下。但是本人并不是太会前端，所以也只能边摸索边搞。不过最终还是成功搞出来了，感觉效果还不错。</p>
 <h2 id="原理和准备">原理和准备</h2>
 <p>可动头图是由多个图层组合而来的，然后每个图层的位移不同，营造一种前后深度。这里我是用自设形象跑的AI，以下是原图。使用模型是自搭建的SD服务，模型是<code>waiANINSFWPONYXL</code>，骑扫帚融了Lora:<code>riding_broom</code>。然后还需要一个背景，背景也是用这个基模跑的。 <img onerror="imgOnError(this);" data-fancybox="gallery" src="./fiska.png" alt="头图原图" data-caption="头图原图" loading="lazy"> <img onerror="imgOnError(this);" data-fancybox="gallery" src="./header_back.png" alt="背景图" data-caption="背景图" loading="lazy"></p>
 <p>然后利用PS抠图，将图片分出几个可动图层，注意这里要把背景弄成透明的，按照png格式保存。 <img onerror="imgOnError(this);" data-fancybox="gallery" src="./layer.png" alt="背景图" data-caption="背景图" loading="lazy"></p>
@@ -765,7 +766,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732718758030"></script>
+<script async src="/js/app.js?v=1732773219967"></script>
 
 
 
