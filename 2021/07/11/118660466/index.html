@@ -30,19 +30,20 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732780748233">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487623">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732780748233">
+    <link rel="stylesheet" href="/css/style.css?v=1732796487623">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732780748233">
+            <link rel="stylesheet" href="/custom.css?v=1732796487623">
         
     
 
 
 
-    <script src="js/echarts.js"></script>
+    <script src="/js/echarts.js"></script>
+    <script src="/js/typed.js"></script>
 
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -249,7 +250,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732780748233"></script>
+	<script async src="/js/search.js?v=1732796487623"></script>
 
 
 
@@ -492,7 +493,8 @@ mjx-container[display="true"] + br {
     <img src="/static/pic/header_img/header_moutain.png" class="header_moutain_block block" id="header_div_mt"/>
     <img src="/static/pic/header_img/bf3.png" class="bf3_block block" id="header_div_bf3"/>
     <img src="/static/pic/header_img/bf2.png" class="bf2_block block" id="header_div_bf2"/>
-    <img src="/static/pic/header_img/blog_title.png" class="title_block block" id="header_div_title"/>
+    <!-- <img src="/static/pic/header_img/blog_title.png" class="title_block block" id="header_div_title"/> -->
+    <div class="typed_title_area block", id="header_div_title"><span id="typed_title"></span></div>
     <img src="/static/pic/header_img/witch.png" class="fiska_block block" id="header_div_fiska"/>
     <img src="/static/pic/header_img/bf1.png" class="bf1_block block" id="header_div_bf1"/>
     <img src="/static/pic/header_img/bf4.png" class="bf4_block block" id="header_div_bf4"/>
@@ -500,6 +502,15 @@ mjx-container[display="true"] + br {
 </div>
 
 <script>
+
+var typed = new Typed('#typed_title', {
+      strings: ['Hello!', 'Kalzn\'s Blog'],
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 2000,
+      loop: true
+    });
+
 
 function set_block_position(rate, fullWidth) {
     fiska_block = document.getElementById("header_div_fiska")
@@ -1084,7 +1095,7 @@ DO_NOT_TANSLATE_MODE(3)
 
  
 
-<script async src="/js/app.js?v=1732780748236"></script>
+<script async src="/js/app.js?v=1732796487626"></script>
 
 
 

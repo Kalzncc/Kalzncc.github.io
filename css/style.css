@@ -1007,6 +1007,15 @@ body {
   height: 60px;
   filter: blur(0px);
 }
+.typed_title_area {
+  float: left;
+  position: absolute;
+  color: #fff;
+  font-size: 50px;
+  margin-left: 25px;
+  margin-top: 50px;
+  font-weight: bolder;
+}
 .header_anime {
   background-image: url("/static/pic/header_img/header_back.png");
   background-size: cover; /* 背景图片覆盖整个元素 */
