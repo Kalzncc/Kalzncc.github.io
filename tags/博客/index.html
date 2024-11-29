@@ -22,13 +22,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487709">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179864">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487709">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179864">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487709">
+            <link rel="stylesheet" href="/custom.css?v=1732866179864">
         
     
 
@@ -130,7 +130,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487709"></script>
+	<script async src="/js/search.js?v=1732866179864"></script>
 
 
 
@@ -531,7 +531,15 @@ header_anime()
         <h2>2022</h2>
         <ul>
         
-            <li><span>11-22</span><a href="/2022/11/22/blog-reform-plan/" >博客改造计划</a></li>
+            <li class="archives_item" id="item_2022/11/22/blog-reform-plan/">
+                <span>11-22</span>
+                <a href="/2022/11/22/blog-reform-plan/" class="archives_href" >博客改造计划</a>
+            </li>
+            <script>
+                document.getElementById('item_2022/11/22/blog-reform-plan/').addEventListener('click', function(event) {
+                    window.location.href = '/2022/11/22/blog-reform-plan/'
+                })
+            </script>
         
         </ul>
     
@@ -582,7 +590,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487710"></script>
+<script async src="/js/app.js?v=1732866179865"></script>
 
 
 

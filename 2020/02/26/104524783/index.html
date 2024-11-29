@@ -28,13 +28,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487656">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179826">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487657">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179826">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487657">
+            <link rel="stylesheet" href="/custom.css?v=1732866179826">
         
     
 
@@ -248,7 +248,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487657"></script>
+	<script async src="/js/search.js?v=1732866179826"></script>
 
 
 
@@ -639,12 +639,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/10.jpg" alt="FFT前置知识及FFT\FFT分治" loading="lazy">
+<a href="/2020/02/26/104524783/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/10.jpg" alt="FFT前置知识及FFT\FFT分治" loading="lazy">
             <h1>FFT前置知识及FFT\FFT分治</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2020年02月26日</a>
@@ -669,7 +688,6 @@ header_anime()
     
 
 </div>
-
     <p>首先依次介绍FFT(快速傅里叶变换)前置知识: 复数及单位根<br>
 复变函数欧拉定理 单位根三大引理 多项式的系数与点值表示法 多项式的求值与插值(顺介绍拉格朗日插值法) 向量卷积</p>
 <h6 id="复数及单位根">复数及单位根</h6>
@@ -796,7 +814,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487666"></script>
+<script async src="/js/app.js?v=1732866179835"></script>
 
 
 

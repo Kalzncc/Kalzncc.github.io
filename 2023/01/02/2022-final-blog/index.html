@@ -42,13 +42,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487529">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179752">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487529">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179752">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487529">
+            <link rel="stylesheet" href="/custom.css?v=1732866179752">
         
     
 
@@ -262,7 +262,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487529"></script>
+	<script async src="/js/search.js?v=1732866179752"></script>
 
 
 
@@ -653,12 +653,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/fireworks.png" alt="2022最终回！" loading="lazy">
+<a href="/2023/01/02/2022-final-blog/">
+    
+        <div id="page_cover_area"  class="nexmoe-post-cover mdui-ripple absolute"> 
+            <img id="page_cover_img" src="/static/fireworks.png" alt="2022最终回！" loading="lazy">
             <h1>2022最终回！</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2023年01月02日</a>
@@ -683,7 +702,6 @@ header_anime()
     
 
 </div>
-
     <h1 id="最终回">2022最终回</h1>
 <h2 id="引言">0 引言</h2>
 <p>2022是特殊的一年，至少从2018年算起是这样的。应该是因为毕业的缘故吧，而且不同于四年前的那次，这次毕业后也算是半只脚踏入社会了。虽然是读研了，但是在中科院体系里面，算是所里的半个职工了，打螺丝改bug一样少不了。</p>
@@ -847,7 +865,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487531"></script>
+<script async src="/js/app.js?v=1732866179754"></script>
 
 
 

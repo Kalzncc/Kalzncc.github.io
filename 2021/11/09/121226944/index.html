@@ -27,13 +27,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487610">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179804">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487610">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179804">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487610">
+            <link rel="stylesheet" href="/custom.css?v=1732866179804">
         
     
 
@@ -247,7 +247,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487610"></script>
+	<script async src="/js/search.js?v=1732866179804"></script>
 
 
 
@@ -638,12 +638,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/0.jpg" alt="AOP（面向切面编程）的简单理解笔记" loading="lazy">
+<a href="/2021/11/09/121226944/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/0.jpg" alt="AOP（面向切面编程）的简单理解笔记" loading="lazy">
             <h1>AOP（面向切面编程）的简单理解笔记</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2021年11月09日</a>
@@ -668,7 +687,6 @@ header_anime()
     
 
 </div>
-
     <p>AOP（Aspect Oriented Programming 面向切面编程）是从OOP（面向对象编程）衍生出来的，我查阅了各种书籍、网课，上面的都比较说法晦涩难懂，有甚者连基本概念都没讲就直接领着啃源码，个人太笨了，不太适应这种学习方式。还是没能正确的理解AOP的本质，最后终于在知乎的<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24863332">这篇提问</a>下找到了相对简单的引例。 回忆一下，OOP的三个要素，“封装”、“继承”、“多态”。其中封装要求我们将各种方法封装到一个类里面，这样做分散了代码和功能，无疑提高了代码的可维护性和可重用性，但是也产生了一些弊端。如果有功能是公用的，那么我们必须将这个功能在所有类里面重写一遍，例如记录日志功能，我们要求在某些方法执行的时候，进行日志记录，那么按照传统OOP，我们需要在这些方法里面都加入日志记录相关的代码，大大增加了代码量，你当然也可以选择将日志记录功能封装成类，然后在这些方法执行的时候调用即可，但是这样作则无疑令这些方法所属的类与日志记录类耦合，所以诞生了AOP思想，<strong>将我们需要运行的代码（切面 Aspect）动态的插入（切入）到指定的地方。</strong> 继续刚刚的例子，我们在需要进行日志记录的类方法开始运行前建立一个插入点（<strong>切入点 Point cut</strong>），当运行到这些切入点时，我们对程序进行拦截，然后通过<strong>通知（Advice）</strong> 来执行 <strong>切面</strong>，在例子中，日志记录相关的代码就是<strong>切面</strong>，而被通知的对象（被关注的对象、被注入切面的对象）就是<strong>目标对象（Target）</strong>。最后我们还要了解切面的<strong>织入（Weaving）</strong> 方式，即何时将切面注入到相应位置：编译时期织入、类加载时期织入、执行时期织入。</p>
 
     
@@ -741,7 +759,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487618"></script>
+<script async src="/js/app.js?v=1732866179805"></script>
 
 
 

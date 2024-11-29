@@ -26,13 +26,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487591">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179801">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487591">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179801">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487591">
+            <link rel="stylesheet" href="/custom.css?v=1732866179801">
         
     
 
@@ -246,7 +246,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487591"></script>
+	<script async src="/js/search.js?v=1732866179801"></script>
 
 
 
@@ -637,12 +637,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/6.jpg" alt="博客迁移说明，我是Kalzn" loading="lazy">
+<a href="/2022/11/19/hello-world/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/6.jpg" alt="博客迁移说明，我是Kalzn" loading="lazy">
             <h1>博客迁移说明，我是Kalzn</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2022年11月19日</a>
@@ -663,7 +682,6 @@ header_anime()
     
 
 </div>
-
     <p>我懒，所以一直不想迁移博客，所以对CSDN广告的容忍还是很高的。</p>
 <p>但是由于最近CSDN的广告真的是让我忍无可忍（开屏一个网页的超大广告是搞什么？）所以还是花点时间迁过来吧。之后CSDN还会更新，但是说不定那天就完全转移过来了捏。之前的博客我会慢慢搬（github找了一圈，也没找见有博客搬迁的脚本，有无大佬搞一搞。）</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35802619">CSDN链接</a></p>
@@ -736,7 +754,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487592"></script>
+<script async src="/js/app.js?v=1732866179802"></script>
 
 
 

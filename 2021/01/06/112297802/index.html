@@ -27,13 +27,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487620">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179809">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487620">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179809">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487620">
+            <link rel="stylesheet" href="/custom.css?v=1732866179809">
         
     
 
@@ -247,7 +247,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487621"></script>
+	<script async src="/js/search.js?v=1732866179809"></script>
 
 
 
@@ -638,12 +638,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/8.jpg" alt="我的明天" loading="lazy">
+<a href="/2021/01/06/112297802/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/8.jpg" alt="我的明天" loading="lazy">
             <h1>我的明天</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2021年01月06日</a>
@@ -668,7 +687,6 @@ header_anime()
     
 
 </div>
-
     <p>先报一下自己的成果吧，挺丢人的。 2019 ACM山东省省赛 银奖 2019 ICPC区域赛 银川 铜 2019 ICPC区域赛 EC-Final 银 2020 蓝桥杯 B组 国二（丢人） 2020 CCPC 长春 银奖 2020 天梯赛 个人国一 2020 ICPC区域赛 上海 银奖（第38名）</p>
 <p>接触算法比赛已经两年半了（上大学两年半了），算是我<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35802619/article/details/106863980">这篇博客</a>的续集了，这半年里经历了很多事情。理论上也该退役了，但是因为疫情的影响，ICPC部分场次被推到了年后。不过年后真的就有点紧张了（要考研了嘛）。我是不太想找工作，毕竟顶着一个双非本科的学历，指不定以后有什么上升渠道的闭塞。（虽然说来有点惭愧，但是自我感觉进个好点的厂子可能性还是很大的）还是要读研了。保研啥的，现在的我不敢想，因为全院只有一个竞赛推免的名额，我的四级成绩还没有达到最低要求。（不过还有一次机会）走成绩成绩推免也是不够，本人现在专业第7的样子，成绩推免只有3个。。哈哈。 每当和队友聊起这，就有点迷茫，前途考虑起来还是比这比赛残酷的多。我的队友竞赛积分都够保研，但是英语也都是没有达到最低要求。所以现在都在考虑考研的事情。还记得前几周，2021考研结束的那天，整个教学楼瞬间人去楼空。晚上我看时间差不多了，准备关灯离开实验室。发现过道走廊上一张张桌子，只剩下了一摞摞的书。脑子突然一热——昨天这里还都是背书的学长学姐们，唉，这么快，就轮到我们了。我感觉有点伤感，转眼间，我的大学生活就该告一段落了。（仿佛高考还在去年的样子。。）我回忆了我的3年大学生活，其实还是很后悔的，真的还是做的不够。检哥上课时候说：人要尝试摸自己的天花板。而现在的我，也不清楚是不是已经达到我的天花板了，自我感觉是大概率没有。我不敢说卷，一个双非本科谈什么卷，只不过是自己不努力罢了。 事到如今，我也只能在此记录一下我大学的经过。 自上次写完博客后，经历了四场大比赛，蓝桥、ICPC、CCPC、天梯赛。蓝桥，刚刚也说了，国二。得知成绩那天，我们在调试天梯赛的机器。我走出天梯赛热身的考场后，我队友在外面等着我，一会我们要去另一个教学楼监考，因为有个ICPC的校内排位赛啥的。 当时我队友看着我： “蓝桥成绩出了。。。” “哦？怎么样。”我那时以为我国一很稳。 “你，，，可以接受你不是国一的事实嘛。。” 我tmd，我看了名单后，在一堆国一的簇拥下，都不知道自己是怎么走到另一栋楼的。真的，太难受了，我之前梦见我的失利，但是现实要远比梦境刺痛的多，好家伙，当场开始网易云。后来听我队友说，他考虑了很久，该怎么把这个事情给我说。emmm，然后当晚就是直接翘了监考，和我那个队友出去吃了一顿。。。。 说一下翻车的原因： 填空，一个100！的因子个数，直接算错，好家伙，不知道怎么了，质因子分解敲错了？？？？我的天，我上去给我两个大嘴巴子。最后一填空，搜错了。第二编程线段树，好家伙直接字符串hash了比字典序，我靠，我tm，我考蓝桥那天早上是没吃早饭，但也不至于把昨天的饭都tmd反刍到脑子里了吧。然后第三贪心也不知我那种写法是不是可以得分。。。最后我是国二第3还是第4来着，我tmd后来一想，我就是第二个编程写个暴力上去也tm是国一了吧。唉~<br>
 “人事无常”，这是我大学悟出的第二个道理，第一个是“希望越大，失望就越大”。（靠，我的大学经历了什么。）蓝桥考完后，我颓废了2个星期，我敢保证，这是应该是我大学最大的遗憾<strong>之一</strong>，直到天梯赛，一切才峰回路转。拿了个个人国一，全校唯一一个个人国一。虽然不及蓝桥的含金量，但也足以给我打一针缓心药了。然后就是ICPC上海了，真的卷，我们7题38名，35个金，，好家伙直接把我们的金给硬生生卷没了。其实说起这次比赛，最遗憾的应该是我的队友，因为最后我手里的题都出了，我最后出了那个圆和十字路口的题目，而两个队友卡到了那道餐桌构造上了，最后一直都没推出了贪心。我是站在他们身后，也没啥办法。赛后才发现结论很简单的样子。我其实最后的遗憾不是太大。如果这个题出了就当场8题金，直接退役了。其实最后一看排名，金和银的分界正好差了2个小时的罚时，就算没有失误也很难是金。也只能这样了。 比赛其实收益小于付出，看我现在的样子就知道了。不过现在想起来，感觉还是不错的，虽不耀眼，但起码有些成绩。记得前两天刷知乎，看到以为老哥的提问，问怎么调和acm队友之间的关系，据他所说，自己很想打比赛，但是学校不强，没有厉害的队友，队友都不想练，最后也遗憾打铁了。现在他也只能自己孤军奋战。我当时想，好家伙，如果是我，我肯定不会打了，像我这么功利的人，这些没有利益的事情，我是绝对不去干的。但是转念一想，发现自己还是很幸运的啊，全校不强不弱，我进校前好歹稳定每年都有银。而且被nb的学长带了一路，还有个很负责的教练。这一切的大环境和那位题主比起来，真的好太多了——<strong>学校不弱</strong>，起码让我这种功利的人，有种念想，<strong>学校不强</strong>，起码让我这种废柴也能冲出学校，拿到名额。<strong>教练负责</strong>，让我这种懒惰的人被逼的每天也有训练。<strong>学长nb</strong>，我在校时，每周都会有学长给我们上课，暑假集训队也会组织集训。更重要的是，我从大一进校以来，被各路学长带着起飞。哈哈哈，每年都是，现在是17级学长带19级，明年就该我们带20级了。</p>
@@ -746,7 +764,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487622"></script>
+<script async src="/js/app.js?v=1732866179810"></script>
 
 
 

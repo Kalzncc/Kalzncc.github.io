@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487532">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179743">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487532">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179743">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487532">
+            <link rel="stylesheet" href="/custom.css?v=1732866179743">
         
     
 
@@ -251,7 +251,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487532"></script>
+	<script async src="/js/search.js?v=1732866179744"></script>
 
 
 
@@ -642,12 +642,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/10.jpg" alt="机器学习算法实现" loading="lazy">
+<a href="/2022/12/10/ML-impl/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/10.jpg" alt="机器学习算法实现" loading="lazy">
             <h1>机器学习算法实现</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2022年12月10日</a>
@@ -672,7 +691,6 @@ header_anime()
     
 
 </div>
-
     <p><a target="_blank" rel="noopener" href="https://github.com/Kalzncc/MachineLearningImpl/edit/master/README.md">仓库地址</a></p>
 <h1 id="machinelearningimpl">MachineLearningImpl</h1>
 <p>这里是一些经典机器学习算法的实现。实现基于C++或者python基本库（python使用numpy和pandas，不使用任何机器学习框架），初学学习之用。</p>
@@ -792,7 +810,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487534"></script>
+<script async src="/js/app.js?v=1732866179751"></script>
 
 
 

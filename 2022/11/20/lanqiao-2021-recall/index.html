@@ -27,13 +27,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487550">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179754">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487550">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179754">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487550">
+            <link rel="stylesheet" href="/custom.css?v=1732866179754">
         
     
 
@@ -247,7 +247,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487550"></script>
+	<script async src="/js/search.js?v=1732866179755"></script>
 
 
 
@@ -638,12 +638,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/5.jpg" alt="2021年-蓝桥c/c++ b组国赛回忆题解" loading="lazy">
+<a href="/2022/11/20/lanqiao-2021-recall/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/5.jpg" alt="2021年-蓝桥c/c++ b组国赛回忆题解" loading="lazy">
             <h1>2021年-蓝桥c/c++ b组国赛回忆题解</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2022年11月20日</a>
@@ -668,7 +687,6 @@ header_anime()
     
 
 </div>
-
     <p>更新一下。成绩出来了，第18名。估计是H题没能拿全分，最后一个题又没有写出一个比较好的算法。</p>
 <h3 id="a">A</h3>
 <p>这个题有点坑人，因为他不是一个算法题，而是一个计算机知识题，不知道出题人出这个题的意图。。 刚拿到蒙了，但是回忆了一下，有次我手机限速，百度了一下1Mbps是多少。隐隐约约记得公式是1Mbps=0.125MB/s， 所以。。</p>
@@ -769,7 +787,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487553"></script>
+<script async src="/js/app.js?v=1732866179756"></script>
 
 
 

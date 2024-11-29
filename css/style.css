@@ -936,12 +936,27 @@ body {
 .medium-zoom-overlay {
   z-index: 9999;
 }
+.archives_href:hover {
+  text-decoration: none;
+}
+.archives_item {
+  transition: background-color 0.2s ease-in-out 0s;
+}
+.archives_item:hover {
+  background-color: #e6e6e6;
+}
 .medium-zoom-image--opened {
   z-index: 9999;
   background: rgba(31,34,36,0.925);
   box-shadow: 0 1em 3em 0.5em rgba(0,0,0,0.25);
 }
-.fiska_block {
+.header_anime .block {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; /* 标准语法 */
+}
+.header_anime .fiska_block {
   height: 120px;
   float: center;
   position: absolute;
@@ -950,7 +965,7 @@ body {
   margin-bottom: 0px;
   animation: floatBlock 10s infinite ease-in-out;
 }
-.bf1_block {
+.header_anime .bf1_block {
   height: 60px;
   float: center;
   position: absolute;
@@ -959,7 +974,7 @@ body {
   margin-bottom: 0px;
   animation: floatBlockBf 9s infinite ease-in-out;
 }
-.bf2_block {
+.header_anime .bf2_block {
   height: 70px;
   float: center;
   position: absolute;
@@ -968,7 +983,7 @@ body {
   margin-bottom: 0px;
   animation: floatBlockBf 13s infinite ease-in-out;
 }
-.bf3_block {
+.header_anime .bf3_block {
   height: 40px;
   float: center;
   position: absolute;
@@ -977,7 +992,7 @@ body {
   margin-bottom: 0px;
   animation: floatBlockBf 8s infinite ease-in-out;
 }
-.bf4_block {
+.header_anime .bf4_block {
   height: 170px;
   float: center;
   position: absolute;
@@ -986,7 +1001,7 @@ body {
   margin-bottom: 0px;
   animation: floatBlockBf 7s infinite ease-in-out;
 }
-.header_moutain_block {
+.header_anime .header_moutain_block {
   height: 240px;
   float: center;
   position: relative;
@@ -997,7 +1012,7 @@ body {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-.title_block {
+.header_anime .title_block {
   float: left;
   position: absolute;
   color: #fff;
@@ -1007,7 +1022,7 @@ body {
   height: 60px;
   filter: blur(0px);
 }
-.typed_title_area {
+.header_anime .typed_title_area {
   float: left;
   position: absolute;
   color: #fff;

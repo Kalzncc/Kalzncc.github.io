@@ -63,13 +63,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487489">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179704">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487489">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179704">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487489">
+            <link rel="stylesheet" href="/custom.css?v=1732866179704">
         
     
 
@@ -283,7 +283,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487489"></script>
+	<script async src="/js/search.js?v=1732866179705"></script>
 
 
 
@@ -674,12 +674,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/12.jpg" alt="面试-数据库基础以及MySql、ClickHost、Redis简介" loading="lazy">
+<a href="/2024/04/09/137570823/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/12.jpg" alt="面试-数据库基础以及MySql、ClickHost、Redis简介" loading="lazy">
             <h1>面试-数据库基础以及MySql、ClickHost、Redis简介</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2024年04月09日</a>
@@ -704,7 +723,6 @@ header_anime()
     
 
 </div>
-
     <h2 id="数据完整性">0.数据完整性</h2>
 <p>确保数据准确和一致，主要有以下四类约束：</p>
 <p><strong>实体完整性</strong> 主键完整</p>
@@ -1917,7 +1935,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487519"></script>
+<script async src="/js/app.js?v=1732866179722"></script>
 
 
 

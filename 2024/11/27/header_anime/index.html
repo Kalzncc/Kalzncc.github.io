@@ -32,13 +32,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487460">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179658">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487460">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179658">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487460">
+            <link rel="stylesheet" href="/custom.css?v=1732866179658">
         
     
 
@@ -252,7 +252,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487460"></script>
+	<script async src="/js/search.js?v=1732866179658"></script>
 
 
 
@@ -643,12 +643,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/3.jpg" alt="B站同款可动头图做法⬆️" loading="lazy">
-            <h1>B站同款可动头图做法⬆️</h1>
+<a href="/2024/11/27/header_anime/">
+    
+        <div id="page_cover_area"  class="nexmoe-post-cover mdui-ripple absolute"> 
+            <img id="page_cover_img" src="/static/pic/ai/3.jpg" alt="B站同款可动头图做法⬆️" loading="lazy">
+            <h1>📌B站同款可动头图做法⬆️</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2024年11月27日</a>
@@ -673,7 +692,6 @@ header_anime()
     
 
 </div>
-
     <h1 id="b站同款可动头图做法">B站同款可动头图做法</h1>
 <video width="500" height="240" controls="">
 <source src="./header_demo.mp4" type="video/mp4">
@@ -774,7 +792,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487484"></script>
+<script async src="/js/app.js?v=1732866179670"></script>
 
 
 

@@ -30,13 +30,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487623">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179806">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487623">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179806">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487623">
+            <link rel="stylesheet" href="/custom.css?v=1732866179806">
         
     
 
@@ -250,7 +250,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487623"></script>
+	<script async src="/js/search.js?v=1732866179806"></script>
 
 
 
@@ -641,12 +641,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/2.jpg" alt="KalznOJ评测机，有待完善的一个OnlineJudge评测机" loading="lazy">
+<a href="/2021/07/11/118660466/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/2.jpg" alt="KalznOJ评测机，有待完善的一个OnlineJudge评测机" loading="lazy">
             <h1>KalznOJ评测机，有待完善的一个OnlineJudge评测机</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2021年07月11日</a>
@@ -671,7 +690,6 @@ header_anime()
     
 
 </div>
-
     <p>暂时搞完了，准备考研了。考完研在搞。 <a target="_blank" rel="noopener" href="https://github.com/Kalzncc/KalznCodeJudger">github项目地址</a> # Kalzn_Code_Judger ## 简介 这是一个使用c编写的online judge的评测机，将在完善优化后作为KalznOJ的评测沙盒。Judger每次从一个json文件中读入任务的配置信息。然后生成评测结果，在测试例中，结果将写入工作区目录下的result.txt文本文件中。在正式使用时可以将结果写入json。 ## 准备 目前Judger仅在centOS7以及ubnutu20.04中测试过，理论上适用于所有支持seccomp沙盒机制的linux版本。在进行编译前，请确保已经安装了seccomp库。</p>
 <p>seccomp库安装方法（以ubuntu为例）</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo apt install libseccomp-dev libseccomp2 seccomp<br></code></pre></td></tr></table></figure>
@@ -1095,7 +1113,7 @@ DO_NOT_TANSLATE_MODE(3)
 
  
 
-<script async src="/js/app.js?v=1732796487626"></script>
+<script async src="/js/app.js?v=1732866179809"></script>
 
 
 

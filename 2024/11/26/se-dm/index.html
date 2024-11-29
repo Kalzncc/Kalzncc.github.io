@@ -43,13 +43,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487399">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179618">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487399">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179618">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487399">
+            <link rel="stylesheet" href="/custom.css?v=1732866179618">
         
     
 
@@ -263,7 +263,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487400"></script>
+	<script async src="/js/search.js?v=1732866179619"></script>
 
 
 
@@ -654,12 +654,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/5.jpg" alt="软件工程与设计模式相关，Spring简介" loading="lazy">
+<a href="/2024/11/26/se-dm/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/5.jpg" alt="软件工程与设计模式相关，Spring简介" loading="lazy">
             <h1>软件工程与设计模式相关，Spring简介</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2024年11月26日</a>
@@ -684,7 +703,6 @@ header_anime()
     
 
 </div>
-
     <h1 id="软件工程与设计模式相关spring简介">软件工程与设计模式相关，Spring简介</h1>
 <h2 id="编程思想">1.编程思想</h2>
 <h3 id="面向过程编程">1.1 面向过程编程</h3>
@@ -1293,7 +1311,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487448"></script>
+<script async src="/js/app.js?v=1732866179655"></script>
 
 
 

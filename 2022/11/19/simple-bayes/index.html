@@ -27,13 +27,13 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732796487578">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732866179791">
     
-    <link rel="stylesheet" href="/css/style.css?v=1732796487578">
+    <link rel="stylesheet" href="/css/style.css?v=1732866179791">
 
     
         
-            <link rel="stylesheet" href="/custom.css?v=1732796487578">
+            <link rel="stylesheet" href="/custom.css?v=1732866179791">
         
     
 
@@ -247,7 +247,7 @@ mjx-container[display="true"] + br {
 </div>
 
 
-	<script async src="/js/search.js?v=1732796487578"></script>
+	<script async src="/js/search.js?v=1732866179791"></script>
 
 
 
@@ -638,12 +638,31 @@ header_anime()
 
   <article>
     
-        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
-            <img src="/static/pic/ai/10.jpg" alt="基于C++的朴素贝叶斯分类器" loading="lazy">
+<a href="/2022/11/19/simple-bayes/">
+    
+        <div id="page_cover_area" class="nexmoe-post-cover absolute"> 
+            <img  id="page_cover_img" src="/static/pic/ai/10.jpg" alt="基于C++的朴素贝叶斯分类器" loading="lazy">
             <h1>基于C++的朴素贝叶斯分类器</h1>
         </div>
     
+</a>
+
+<script>
+
+function cover_anime() {
+    page_cover_img = document.getElementById('page_cover_img')
+    page_cover_img.style.transition = 'filter 0.2s ease-in-out 0.0s'
+    document.getElementById('page_cover_area').addEventListener('mouseenter', function(event) {
+        page_cover_img.style.filter = 'blur(8px) brightness(50%)'
+    })
+    document.getElementById('page_cover_area').addEventListener('mouseleave', function(event) {
+        page_cover_img.style.filter = 'blur(0px) brightness(100%)'
+    })
+}
+
+cover_anime()
     
+</script>
     <div class="nexmoe-post-meta">
     <div class="nexmoe-rainbow">
         <a class="nexmoefont icon-calendar-fill">2022年11月19日</a>
@@ -668,7 +687,6 @@ header_anime()
     
 
 </div>
-
     <h1 id="基于c的朴素贝叶斯分类器">基于C++的朴素贝叶斯分类器</h1>
 <p><a target="_blank" rel="noopener" href="https://github.com/Kalzncc/SimpleBayesClassifier">github链接</a> 使用c++编写的朴素贝叶斯分类器，其中似然中的离散分量，以及先验概率使用拉普拉斯平滑，连续分量为正态分布。</p>
 <p><strong>警告，此代码仅为初学学习之用，请勿用作任何工程项目！</strong></p>
@@ -789,7 +807,7 @@ header_anime()
 
  
 
-<script async src="/js/app.js?v=1732796487583"></script>
+<script async src="/js/app.js?v=1732866179795"></script>
 
 
 
