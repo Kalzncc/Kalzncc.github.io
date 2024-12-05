@@ -1047,6 +1047,18 @@ body {
   height: 120px; /* 使容器的高度为视口高度 */
   margin-top: 30px;
 }
+.default_comment {
+  background-image: url("/static/comment.jpg");
+  background-size: cover; /* 背景图片覆盖整个元素 */
+  background-position: center center; /* 背景图片居中 */
+  background-repeat: no-repeat; /* 背景图片不重复 */
+  background-size: 100%;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  height: 120px; /* 使容器的高度为视口高度 */
+  margin-top: 30px;
+}
 #nexmoe-background .nexmoe-bg {
   opacity: 0.3;
   background-size: cover;
