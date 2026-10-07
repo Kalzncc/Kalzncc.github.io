@@ -1614,6 +1614,33 @@ body {
   background: #fff;
   color: #444;
 }
+.nexmoe-tool .skating-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 56px;
+  min-height: 80px;
+  border-radius: 16px;
+  background: #eaf6fa;
+  color: #315d70;
+  box-shadow: 0 3px 12px rgba(49,93,112,0.18);
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.nexmoe-tool .skating-entry span:first-child {
+  font-size: 24px;
+}
+.nexmoe-tool .skating-entry:hover,
+.nexmoe-tool .skating-entry:focus-visible {
+  background: #d6edf5;
+  transform: translateY(-2px);
+  outline: 2px solid #315d70;
+  outline-offset: 3px;
+}
 @media screen and (max-width: 1024px) {
   .nexmoe-post-right {
     margin: 24px 0px;

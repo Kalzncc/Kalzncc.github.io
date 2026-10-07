@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#dbeef8" />
+    <title>冰上星光 · Starlight on Ice</title>
+    <script type="module" crossorigin src="/games/project-skating/assets/index-B21fUz3q.js"></script>
+    <link rel="stylesheet" crossorigin href="/games/project-skating/assets/index-BHE4WRxh.css">
+  <style>.blog-return{position:fixed;left:12px;bottom:12px;z-index:10000;padding:8px 12px;border:1px solid #bdd8e0;border-radius:10px;background:#f6fcff;color:#315d70;text-decoration:none;font:12px system-ui}.blog-return:focus-visible{outline:2px solid #315d70}#app:fullscreen~.blog-return{display:none}</style></head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span>冰上星光<small>STARLIGHT ON ICE</small></span></div>
+        <div class="stage-label"><span class="live-dot"></span><span class="stage-mode"><select id="stage-mode" aria-label="舞台模式"><option value="practice" selected>自由练习</option><option value="choreography">编排模式</option></select></span><span class="separator">/</span><span id="stage-mode-code">PRACTICE</span></div>
+        <div class="topbar-actions">
+          <label class="character-select"><span>角色</span><select id="character-select" aria-label="人物切换"><option value="ludi">素体</option><option value="foxgirl123">露狐狐</option></select><small id="character-load-status" role="status" aria-live="polite"></small></label>
+          <div class="view-controls" aria-label="画面与帮助">
+            <button id="presentation-help" type="button">操作指南</button>
+            <button id="presentation-motion" type="button" aria-pressed="true" title="开关轻微镜头运镜">动态镜头</button>
+            <button id="presentation-debug" type="button" aria-expanded="false" aria-controls="debug-stack">调试</button>
+            <button id="presentation-fullscreen" type="button">全屏</button>
+          </div>
+          <div class="recording-controls" aria-label="游戏录像">
+            <button id="record-start" type="button">● 开始录制</button>
+            <button id="record-stop" type="button" disabled>停止</button>
+            <button id="record-replay" type="button" disabled>重放</button>
+            <a id="record-download" href="#" hidden>下载录像</a>
+            <output id="record-status" role="status" aria-live="polite">尚未录制</output>
+          </div>
+          <button id="reset-position" class="reset-button" type="button">↺ 回到起点 <kbd>R</kbd></button>
+        </div>
+      </header>
+      <main class="stage-wrap">
+        <div id="game" class="board-keeps" tabindex="0" role="application" aria-label="滑冰练习区，WASD 或方向键移动，Shift 刹车，空格跳跃准备，Q 切换正滑或倒滑，R 回到起点"></div>
+        <div id="record-replay-overlay" class="record-replay-overlay board-keeps" hidden>
+          <video id="record-replay-video" controls playsinline aria-label="滑冰录像回放"></video>
+          <button id="record-replay-close" type="button" aria-label="关闭录像回放">关闭回放 ×</button>
+        </div>
+        <button id="choreography-start" class="choreography-start board-keeps" type="button" hidden>开始编排</button>
+        <div class="choreography-rail board-keeps" aria-label="编排工具">
+          <button type="button" data-choreography-tool="start">设置起点</button>
+          <button type="button" data-choreography-tool="glide">添加滑行点</button>
+          <button type="button" data-choreography-tool="action">添加动作</button>
+          <button type="button" data-choreography-tool="global">全局配置</button>
+          <button type="button" data-choreography-tool="play">开始播放</button>
+          <button type="button" data-choreography-tool="export">导出</button>
+          <button type="button" data-choreography-tool="import">导入</button>
+        </div>
+        <div id="action-picker" class="action-picker board-keeps" role="dialog" aria-modal="true" aria-labelledby="action-picker-title" hidden>
+          <div class="action-picker-panel">
+            <header class="action-picker-head">
+              <h2 id="action-picker-title">添加动作</h2>
+              <button type="button" class="action-picker-close" data-action-picker-close aria-label="关闭">×</button>
+            </header>
+            <div class="action-picker-list" data-action-picker-list></div>
+          </div>
+        </div>
+        <div id="action-config" class="action-picker board-keeps" role="dialog" aria-modal="true" aria-labelledby="action-config-title" hidden>
+          <div class="action-picker-panel">
+            <header class="action-picker-head">
+              <h2 id="action-config-title" data-action-config-title>动作配置</h2>
+              <button type="button" class="action-picker-close" data-action-config-close aria-label="关闭">×</button>
+            </header>
+            <div class="action-config-body">
+              <small class="action-config-hint" data-action-config-hint></small>
+              <div class="action-config-fields" data-action-config-fields></div>
+            </div>
+            <footer class="action-picker-foot">
+              <button type="button" data-action-config-cancel>取消</button>
+              <button type="button" data-action-config-confirm>确定</button>
+            </footer>
+          </div>
+        </div>
+        <div class="choreography-timeline board-keeps" aria-label="编排顺序">
+          <div class="choreography-timeline-head">
+            <span>编排顺序</span>
+            <small id="choreography-timeline-note" class="choreography-timeline-note" role="status"></small>
+            <output id="choreography-timeline-count">0 个节点</output>
+          </div>
+          <div class="choreography-timeline-body">
+            <div id="choreography-sequence" class="choreography-sequence"></div>
+            <small id="choreography-sequence-empty" class="choreography-sequence-empty">尚未添加编排内容</small>
+          </div>
+        </div>
+        <div class="scene-title"><span class="eyebrow">STARLIGHT ICE CLUB</span><h1>踏上冰面。</h1><p>用方向，找到你的节奏。</p></div>
+        <div class="movement-indicator"><span class="live-dot"></span><span id="movement-status" role="status">准备就绪</span><span class="mode-divider"></span><span id="skating-mode-indicator" class="skating-mode-indicator"><strong id="skating-mode-label">正滑</strong><small>按 Q 切换</small></span></div>
+        <label class="effect-mode-toggle" title="开启后，滑行会留下粉色水滴印迹">
+          <input id="effect-mode-toggle" type="checkbox" aria-label="特效模式">
+          <span class="effect-mode-copy"><b>特效模式</b><small>关闭</small></span>
+        </label>
+        <div class="controls" aria-label="装备栏与痕迹">
+          <div id="equipment-bar" class="equipment-bar" aria-label="装备栏"></div>
+          <button id="clear-traces" type="button">清空痕迹</button>
+        </div>
+        <div id="debug-stack" class="debug-stack" hidden>
+        <details id="motion-debug" class="motion-debug">
+          <summary>运动参数调试</summary>
+          <div class="motion-debug-body">
+            <label class="motion-param"><span>最大速度 <output data-motion-output="maxSpeed"></output></span><input data-motion-param="maxSpeed" type="range" min="200" max="900" step="10"><input data-motion-param="maxSpeed" type="number" min="200" max="900" step="10"></label>
+            <label class="motion-param"><span>加速度响应 <output data-motion-output="acceleration"></output><small>越高起步越快</small></span><input data-motion-param="acceleration" type="range" min="0.5" max="9" step="0.1"><input data-motion-param="acceleration" type="number" min="0.5" max="9" step="0.1"></label>
+            <label class="motion-param"><span>静止惯性系数 <output data-motion-output="coastInertia"></output><small>越低松键后滑得越远</small></span><input data-motion-param="coastInertia" type="range" min="0.02" max="1.2" step="0.01"><input data-motion-param="coastInertia" type="number" min="0.02" max="1.2" step="0.01"></label>
+            <label class="motion-param"><span>急刹惯性系数 <output data-motion-output="emergencyBrakeInertia"></output><small>越低急刹滑得越远</small></span><input data-motion-param="emergencyBrakeInertia" type="range" min="0.5" max="12" step="0.1"><input data-motion-param="emergencyBrakeInertia" type="number" min="0.5" max="12" step="0.1"></label>
+            <label class="motion-param"><span>急转向惯性系数 <output data-motion-output="sharpTurnInertia"></output><small>越低反向滑得越远</small></span><input data-motion-param="sharpTurnInertia" type="range" min="0.05" max="4.5" step="0.05"><input data-motion-param="sharpTurnInertia" type="number" min="0.05" max="4.5" step="0.05"></label>
+            <label class="motion-param"><span>急刹摔倒系数 <output data-motion-output="fallOnEmergencyBrake"></output><small>系数 × 当前速度 / 最大速度</small></span><input data-motion-param="fallOnEmergencyBrake" type="range" min="0" max="1" step="0.01"><input data-motion-param="fallOnEmergencyBrake" type="number" min="0" max="1" step="0.01"></label>
+            <label class="motion-param"><span>急转向摔倒系数 <output data-motion-output="fallOnSharpTurn"></output><small>系数 × 当前速度 / 最大速度</small></span><input data-motion-param="fallOnSharpTurn" type="range" min="0" max="1" step="0.01"><input data-motion-param="fallOnSharpTurn" type="number" min="0" max="1" step="0.01"></label>
+            <label class="motion-param"><span>滑过刹痕摔倒系数 <output data-motion-output="fallOnScratchPass"></output><small>系数 × 当前速度 / 最大速度</small></span><input data-motion-param="fallOnScratchPass" type="range" min="0" max="1" step="0.01"><input data-motion-param="fallOnScratchPass" type="number" min="0" max="1" step="0.01"></label>
+            <label class="motion-param"><span>最短摔倒时间（秒）<output data-motion-output="fallMinimumSeconds"></output></span><input data-motion-param="fallMinimumSeconds" type="range" min="0.5" max="10" step="0.1"><input data-motion-param="fallMinimumSeconds" type="number" min="0.5" max="10" step="0.1"></label>
+            <label class="motion-param"><span>最长摔倒时间（秒）<output data-motion-output="fallMaximumSeconds"></output></span><input data-motion-param="fallMaximumSeconds" type="range" min="0.5" max="15" step="0.1"><input data-motion-param="fallMaximumSeconds" type="number" min="0.5" max="15" step="0.1"></label>
+            <label class="motion-param"><span>摔倒恢复速度<output data-motion-output="fallRecoverySpeed"></output><small>低于该速度可提前恢复</small></span><input data-motion-param="fallRecoverySpeed" type="range" min="0" max="900" step="5"><input data-motion-param="fallRecoverySpeed" type="number" min="0" max="900" step="5"></label>
+            <label class="motion-param"><span>护栏撞击摔倒速度阈值 <output data-motion-output="guardrailFallSpeed"></output><small>绝对速度阈值</small></span><input data-motion-param="guardrailFallSpeed" type="range" min="0" max="900" step="5"><input data-motion-param="guardrailFallSpeed" type="number" min="0" max="900" step="5"></label>
+            <label class="motion-param"><span>前向站立待机触发概率 <output data-motion-output="standbyFrontProbability"></output><small>冷却结束、速度为 0 且正面站立时判定</small></span><input data-motion-param="standbyFrontProbability" type="range" min="0" max="1" step="0.01"><input data-motion-param="standbyFrontProbability" type="number" min="0" max="1" step="0.01"></label>
+            <label class="motion-param"><span>前向站立待机冷却（秒） <output data-motion-output="standbyFrontCooldown"></output></span><input data-motion-param="standbyFrontCooldown" type="range" min="1" max="60" step="1"><input data-motion-param="standbyFrontCooldown" type="number" min="1" max="60" step="1"></label>
+            <button id="reset-motion-tuning" type="button">恢复默认</button>
+          </div>
+        </details>
+        <details id="environment-debug" class="motion-debug environment-debug">
+          <summary>环境参数调试</summary>
+          <div class="motion-debug-body">
+            <label class="motion-param"><span>冰场长度 <output data-environment-output="rinkWidth"></output><small>世界单位；改后需刷新页面才会重建冰面与围栏</small></span><input data-environment-param="rinkWidth" type="range" min="1200" max="6000" step="100"><input data-environment-param="rinkWidth" type="number" min="1200" max="6000" step="100"></label>
+            <label class="motion-param"><span>冰场宽度 <output data-environment-output="rinkHeight"></output><small>世界单位；改后需刷新页面才会重建冰面与围栏</small></span><input data-environment-param="rinkHeight" type="range" min="800" max="4000" step="100"><input data-environment-param="rinkHeight" type="number" min="800" max="4000" step="100"></label>
+            <label class="motion-param"><span>水渍生成系数 <output data-environment-output="waterAmount"></output><small>0 为关闭；系数越大水渍越多</small></span><input data-environment-param="waterAmount" type="range" min="0" max="2" step="0.1"><input data-environment-param="waterAmount" type="number" min="0" max="2" step="0.1"></label>
+            <label class="motion-param"><span>雪渍生成系数 <output data-environment-output="snowAmount"></output><small>0 为关闭；系数越大雪渍越多</small></span><input data-environment-param="snowAmount" type="range" min="0" max="2" step="0.1"><input data-environment-param="snowAmount" type="number" min="0" max="2" step="0.1"></label>
+            <label class="motion-param"><span>冰场初始粗糙程度 <output data-environment-output="initialRoughness"></output><small>0 为关闭；越高随机急刹痕迹越多、越长</small></span><input data-environment-param="initialRoughness" type="range" min="0" max="1" step="0.05"><input data-environment-param="initialRoughness" type="number" min="0" max="1" step="0.05"></label>
+            <label class="environment-toggle"><input type="checkbox" data-environment-toggle="darkSpotlight"><span>暗光聚光灯<small>冰场变暗，斜向追光跟随角色；暗处有星点闪烁</small></span></label>
+            <label class="environment-toggle"><input type="checkbox" data-environment-toggle="fullSnow"><span>满雪模式<small>整个冰场铺满雪渍；与满水模式互斥</small></span></label>
+            <label class="environment-toggle"><input type="checkbox" data-environment-toggle="fullWater"><span>满水模式<small>整个冰场铺满水渍；与满雪模式互斥</small></span></label>
+            <button id="reset-environment-tuning" type="button">恢复默认</button>
+          </div>
+        </details>
+        <details id="difficulty-debug" class="motion-debug difficulty-debug">
+          <summary>难度参数调试</summary>
+          <div class="motion-debug-body">
+            <label class="motion-param"><span>最大准备时间 Max_ready_time（毫秒） <output data-difficulty-output="jumpReadyReactionMs"></output><small>当前仍用于现有准备反应超时；后续作为刃口选择上限</small></span><input data-difficulty-param="jumpReadyReactionMs" type="range" min="100" max="5000" step="100"><input data-difficulty-param="jumpReadyReactionMs" type="number" min="100" max="5000" step="100"></label>
+            <label class="motion-param"><span>跳跃准备最低速度 Jump_ready_min_speed <output data-difficulty-output="jumpReadyMinSpeed"></output><small>绝对速度值，速度必须高于此值才能开始圈数选择</small></span><input data-difficulty-param="jumpReadyMinSpeed" type="range" min="0" max="900" step="5"><input data-difficulty-param="jumpReadyMinSpeed" type="number" min="0" max="900" step="5"></label>
+            <label class="motion-param"><span>跳跃基准最高速度 Max_jump_speed <output data-difficulty-output="maxJumpSpeed"></output><small>速度比例达到 1 时对应的速度</small></span><input data-difficulty-param="maxJumpSpeed" type="range" min="100" max="900" step="10"><input data-difficulty-param="maxJumpSpeed" type="number" min="100" max="900" step="10"></label>
+            <label class="motion-param"><span>点冰选择最长时间 Max_toe_pick_select_time（毫秒） <output data-difficulty-output="maxToePickSelectTimeMs"></output></span><input data-difficulty-param="maxToePickSelectTimeMs" type="range" min="100" max="3000" step="50"><input data-difficulty-param="maxToePickSelectTimeMs" type="number" min="100" max="3000" step="50"></label>
+            <label class="motion-param"><span>Great 判定容差（毫秒） <output data-difficulty-output="greatToePickWindowMs"></output><small>宽于 Perfect / Ex；Hit 使用最长反应窗口</small></span><input data-difficulty-param="greatToePickWindowMs" type="range" min="10" max="3000" step="10"><input data-difficulty-param="greatToePickWindowMs" type="number" min="10" max="3000" step="10"></label>
+            <label class="motion-param"><span>Perfect 判定容差（毫秒） <output data-difficulty-output="perfectToePickWindowMs"></output><small>小于 Great，大于 Ex</small></span><input data-difficulty-param="perfectToePickWindowMs" type="range" min="10" max="3000" step="10"><input data-difficulty-param="perfectToePickWindowMs" type="number" min="10" max="3000" step="10"></label>
+            <label class="motion-param"><span>Ex 判定容差（毫秒） <output data-difficulty-output="exToePickWindowMs"></output><small>最窄判定窗口</small></span><input data-difficulty-param="exToePickWindowMs" type="range" min="10" max="3000" step="10"><input data-difficulty-param="exToePickWindowMs" type="number" min="10" max="3000" step="10"></label>
+            <label class="motion-param"><span>Hit 落冰不稳定值增量 <output data-difficulty-output="stableIncreaseJumpHit"></output></span><input data-difficulty-param="stableIncreaseJumpHit" type="range" min="0" max="1" step="0.01"><input data-difficulty-param="stableIncreaseJumpHit" type="number" min="0" max="1" step="0.01"></label>
+            <label class="motion-param"><span>Great 落冰不稳定值增量 <output data-difficulty-output="stableIncreaseJumpGreat"></output></span><input data-difficulty-param="stableIncreaseJumpGreat" type="range" min="0" max="1" step="0.01"><input data-difficulty-param="stableIncreaseJumpGreat" type="number" min="0" max="1" step="0.01"></label>
+            <label class="motion-param"><span>Perfect 落冰不稳定值增量 <output data-difficulty-output="stableIncreaseJumpPerfect"></output></span><input data-difficulty-param="stableIncreaseJumpPerfect" type="range" min="0" max="1" step="0.01"><input data-difficulty-param="stableIncreaseJumpPerfect" type="number" min="0" max="1" step="0.01"></label>
+            <label class="motion-param"><span>Ex 落冰不稳定值增量 <output data-difficulty-output="stableIncreaseJumpEx"></output></span><input data-difficulty-param="stableIncreaseJumpEx" type="range" min="0" max="1" step="0.01"><input data-difficulty-param="stableIncreaseJumpEx" type="number" min="0" max="1" step="0.01"></label>
+            <label class="motion-param"><span>落冰后摇时间系数 Jump_end_time_factor（毫秒/圈） <output data-difficulty-output="jumpEndTimeFactorMsPerCircle"></output></span><input data-difficulty-param="jumpEndTimeFactorMsPerCircle" type="range" min="50" max="3000" step="50"><input data-difficulty-param="jumpEndTimeFactorMsPerCircle" type="number" min="50" max="3000" step="50"></label>
+            <button id="reset-difficulty-tuning" type="button">恢复默认</button>
+          </div>
+        </details>
+        <details id="instability-config" class="motion-debug instability-config">
+          <summary>不稳定值动作参数</summary>
+          <div id="instability-config-list" class="motion-debug-body instability-config-body" aria-label="只读不稳定值配置"></div>
+        </details>
+        </div>
+        <output id="motion-readout" class="motion-readout" hidden aria-live="polite"></output>
+        <aside class="current-action-card" aria-label="当前人物动作调试">
+          <span>当前 ACTION</span>
+          <output id="current-action">stand</output>
+          <small id="current-action-label">站立</small>
+          <small id="current-action-phase"></small>
+        </aside>
+        <aside id="jump-circle-result" class="jump-circle-result" aria-live="polite" hidden>
+          <span id="jump-circle-result-heading">本次圈数</span>
+          <output id="jump-circle-result-value">—</output>
+          <strong id="jump-circle-result-quality">SELECT</strong>
+          <small id="jump-circle-result-status">等待选择</small>
+        </aside>
+        <aside id="jump-combo" class="jump-combo" aria-live="polite" aria-label="连跳结算" hidden>
+          <div class="jump-combo-heading"><span>✦ 连跳组合</span><strong id="jump-combo-count">2 连跳</strong></div>
+          <div id="jump-combo-value" class="jump-combo-value"></div>
+          <div id="jump-combo-sparks" class="jump-combo-sparks" aria-hidden="true"></div>
+        </aside>
+        <div id="jump-feedback" class="jump-feedback" aria-hidden="true" hidden>
+          <div class="jump-feedback-ring"></div>
+          <div id="jump-feedback-sparks" class="jump-feedback-sparks"></div>
+          <strong id="jump-feedback-label"></strong>
+          <span id="jump-feedback-detail"></span>
+        </div>
+        <section id="jump-circle-meter" class="jump-circle-meter" aria-label="跳跃圈数选择数轴" hidden>
+          <div class="jump-circle-meter-heading"><span id="jump-circle-meter-title">圈数选择</span><output id="jump-circle-meter-meta"></output></div>
+          <div class="jump-circle-selection"><strong id="jump-circle-current">2 圈</strong><span id="jump-circle-time"></span></div>
+          <div id="jump-circle-track" class="jump-circle-track">
+            <div id="jump-circle-segments" class="jump-circle-segments" aria-hidden="true"></div>
+            <div id="jump-circle-cursor" class="jump-circle-cursor"></div>
+            <div class="jump-toe-band jump-toe-band-great" aria-hidden="true"></div>
+            <div class="jump-toe-band jump-toe-band-perfect" aria-hidden="true"></div>
+            <div class="jump-toe-target" aria-hidden="true"><span>✦</span></div>
+            <div id="jump-toe-star-left" class="jump-toe-star jump-toe-star-left" aria-hidden="true">✦</div>
+            <div id="jump-toe-star-right" class="jump-toe-star jump-toe-star-right" aria-hidden="true">✦</div>
+          </div>
+          <div id="jump-circle-ticks" class="jump-circle-ticks" aria-hidden="true"></div>
+          <div class="jump-circle-meter-hint">按 J / K 确认</div>
+          <small id="jump-window-warning" class="jump-window-warning" hidden></small>
+        </section>
+        <section class="instability-meter" aria-label="当前不稳定值">
+          <div class="instability-meter-heading"><span>不稳定值</span><output id="instability-value">3%</output></div>
+          <div id="instability-meter-bar" class="instability-meter-track" role="meter" aria-label="人物不稳定值" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0.03">
+            <div id="instability-marker" class="instability-meter-marker" aria-hidden="true"></div>
+            <span class="instability-axis-top">1</span><span class="instability-axis-bottom">0</span>
+          </div>
+        </section>
+        <section id="speed-meter" class="speed-meter" aria-label="当前滑行速度">
+          <div class="speed-meter-heading"><div><span>速度</span><output id="speed-value">0</output></div><span class="speed-meter-symbol" aria-hidden="true">⌁</span></div>
+          <div id="speed-meter-bar" class="speed-meter-track" role="meter" aria-label="人物速度" aria-valuemin="0" aria-valuemax="620" aria-valuenow="0">
+            <div id="speed-meter-fill" class="speed-meter-fill" aria-hidden="true"></div>
+            <div id="speed-threshold" class="speed-meter-threshold" aria-label="跳跃准备最低速度"><span id="speed-threshold-value"></span></div>
+            <div id="speed-marker" class="speed-meter-marker" aria-hidden="true"></div>
+          </div>
+          <div class="speed-meter-ticks" aria-hidden="true"><span>0</span><span id="speed-max-value">620</span></div>
+          <i class="speed-meter-spark speed-meter-spark-one" aria-hidden="true">✦</i><i class="speed-meter-spark speed-meter-spark-two" aria-hidden="true">✧</i>
+        </section>
+        <div class="stage-caption"><span>01 <i></i> 练习冰场</span><span>让每一次滑行，都有回响。</span></div>
+      </main>
+    <footer class="footer"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / 方向键 · 滑行 <b>·</b> <kbd>SHIFT</kbd> 刹车 <b>·</b> <kbd>SPACE</kbd> 跳跃准备 <b>·</b> <kbd>J</kbd>/<kbd>K</kbd> 圈数、刃口与点冰判定 <b>·</b> <kbd>Q</kbd> 正滑／倒滑 <b>·</b> <kbd>U</kbd>/<kbd>I</kbd>/<kbd>O</kbd>/<kbd>P</kbd> 装备动作</span><span>滚轮缩放镜头</span></footer>
+    </div>
+  <a class="blog-return" href="/">← 返回博客</a></body>
+</html>
