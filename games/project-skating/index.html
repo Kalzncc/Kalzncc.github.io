@@ -8,8 +8,8 @@
     <style>
       #game-loading{position:fixed;inset:0;z-index:20000;display:grid;place-items:center;background:#edf6f8ed;backdrop-filter:blur(10px);font-family:system-ui,sans-serif;color:#315d70}#game-loading[hidden]{display:none}.loading-card{text-align:center;padding:32px;max-width:calc(100vw - 40px)}.loading-orbit{width:64px;height:64px;margin:0 auto 24px;border:3px solid #c6e3e9;border-top-color:#4c8b9c;border-radius:50%;animation:loading-spin 1s linear infinite;display:grid;place-items:center}.loading-orbit span{font-size:24px;animation:loading-spin 1s linear infinite reverse}.loading-card h2{font-size:20px;margin:12px 0}.loading-card p{font-size:13px;color:#637f8e;line-height:1.6}.loading-brand{font-size:11px;letter-spacing:.2em}.loading-card button{border:1px solid #bdd8e0;border-radius:10px;padding:10px 16px;background:white;color:#315d70;cursor:pointer}#game-loading.is-error .loading-orbit{animation:none;border-color:#bd8b77}@keyframes loading-spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.loading-orbit,.loading-orbit span{animation:none}}
     </style>
-    <script type="module" crossorigin src="/games/project-skating/assets/index-BlyD5MtH.js"></script>
-    <link rel="stylesheet" crossorigin href="/games/project-skating/assets/index-pj8PtJuD.css">
+    <script type="module" crossorigin src="/games/project-skating/assets/index-CLOm48he.js"></script>
+    <link rel="stylesheet" crossorigin href="/games/project-skating/assets/index-CBO0-Ixh.css">
   <style>.blog-return{position:fixed;left:12px;bottom:12px;z-index:10000;padding:8px 12px;border:1px solid #bdd8e0;border-radius:10px;background:#f6fcff;color:#315d70;text-decoration:none;font:12px system-ui}.blog-return:focus-visible{outline:2px solid #315d70}#app:fullscreen~.blog-return{display:none}</style></head>
   <body>
     <div id="game-loading" role="status" aria-live="polite" aria-atomic="true">
@@ -23,7 +23,7 @@
           <label class="character-select"><span>角色</span><select id="character-select" aria-label="人物切换"><option value="ludi">素体</option><option value="foxgirl123">露狐狐</option></select><small id="character-load-status" role="status" aria-live="polite"></small></label>
           <div class="view-controls" aria-label="画面与帮助">
             <button id="presentation-help" type="button">操作指南</button>
-            <button id="presentation-motion" type="button" aria-pressed="true" title="开关轻微镜头运镜">动态镜头</button>
+            <button id="presentation-motion" type="button" aria-pressed="true" title="惯性跟随镜头：高速拉远，技术动作拉近">动态镜头</button>
             <button id="presentation-debug" type="button" aria-expanded="false" aria-controls="debug-stack">调试</button>
             <button id="presentation-fullscreen" type="button">全屏</button>
           </div>
@@ -44,12 +44,23 @@
           <button id="record-replay-close" type="button" aria-label="关闭录像回放">关闭回放 ×</button>
         </div>
         <button id="choreography-start" class="choreography-start board-keeps" type="button" hidden>开始编排</button>
+        <div id="choreography-path-options" class="choreography-path-options board-keeps" aria-label="轨迹展示">
+          <div class="choreography-path-option is-prediction">
+            <label><input id="choreography-show-prediction" type="checkbox" checked>开启预测轨迹展示</label>
+            <button class="path-help" type="button" aria-label="预测轨迹说明" aria-describedby="path-prediction-help">?<span id="path-prediction-help" role="tooltip">浅金色为根据当前编排、速度和惯性计算的预计路线。编辑后自动更新，包含跳跃转向、旋转和护栏碰撞，不考虑随机摔倒。<span id="choreography-prediction-status" aria-live="polite"></span></span></button>
+          </div>
+          <div class="choreography-path-option is-actual">
+            <label><input id="choreography-show-actual" type="checkbox" checked>开启实际轨迹展示</label>
+            <button class="path-help" type="button" aria-label="实际轨迹说明" aria-describedby="path-actual-help">?<span id="path-actual-help" role="tooltip">浅青色为本次播放时人物真正经过的路线，随播放持续记录。结束后保留，再次播放时重新记录。关闭展示不会停止记录。</span></button>
+          </div>
+        </div>
         <div class="choreography-rail board-keeps" aria-label="编排工具">
           <button type="button" data-choreography-tool="start">设置起点</button>
           <button type="button" data-choreography-tool="glide">添加滑行点</button>
           <button type="button" data-choreography-tool="action">添加动作</button>
           <button type="button" data-choreography-tool="global">全局配置</button>
           <button type="button" data-choreography-tool="play">开始播放</button>
+          <label class="choreography-clean-option"><input id="choreography-hide-ui" type="checkbox" />播放时隐藏全部 UI<small>H 恢复 · Esc 停止</small></label>
           <button type="button" data-choreography-tool="export">导出</button>
           <button type="button" data-choreography-tool="import">导入</button>
         </div>
@@ -81,6 +92,7 @@
         <div class="choreography-timeline board-keeps" aria-label="编排顺序">
           <div class="choreography-timeline-head">
             <span>编排顺序</span>
+            <button id="choreography-toggle-ui" class="choreography-toggle-ui" type="button">隐藏全部 UI · H</button>
             <small id="choreography-timeline-note" class="choreography-timeline-note" role="status"></small>
             <output id="choreography-timeline-count">0 个节点</output>
           </div>
@@ -89,7 +101,7 @@
             <small id="choreography-sequence-empty" class="choreography-sequence-empty">尚未添加编排内容</small>
           </div>
         </div>
-        <div class="scene-title"><span class="eyebrow">STARLIGHT ICE CLUB</span><h1>测试</h1><p class="build-info">v0.0.1 ( 2026-10-07 )</p><p class="build-info">Built by: GPT-6 | Deepseek-V4.1 Flash |  | Seedance 2.0 | Seedream 5.0 | Anima 2B</p><p class="build-info">Designed by: kalzn</p></div>
+        <div class="scene-title"><span class="eyebrow">STARLIGHT ICE CLUB</span><h1>测试</h1><p class="build-info">v0.1.17 ( 2026-10-11 )</p><p class="build-info">Built by: GPT-6 | Deepseek-V4.1 Flash |  | Seedance 2.0 | Seedream 5.0 | Anima 2B</p><p class="build-info">Designed by: kalzn</p></div>
         <div class="movement-indicator"><span class="live-dot"></span><span id="movement-status" role="status">准备就绪</span><span class="mode-divider"></span><span id="skating-mode-indicator" class="skating-mode-indicator"><strong id="skating-mode-label">正滑</strong><small>按 Q 切换</small></span></div>
         <label class="effect-mode-toggle" title="开启后，滑行会留下粉色水滴印迹">
           <input id="effect-mode-toggle" type="checkbox" aria-label="特效模式">
